@@ -9,6 +9,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * @author Patrick Hahn
+ * @author Annika Schatz
  */
 
 @RestController

@@ -5,6 +5,7 @@ import lombok.NonNull;
 
 /**
  * @author Patrick Hahn
+ * @author Annika Schatz
  */
 
 @Data
