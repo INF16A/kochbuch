@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="kochbuch:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/kochbuch_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="kochbuch/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="kochbuch" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
