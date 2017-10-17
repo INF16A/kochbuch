@@ -23,13 +23,13 @@ public class GreetingController
 		this.greetingRepository = greetingRepository;
 	}
 
-	@RequestMapping(value = "/greeting/{name}", method = RequestMethod.GET)
+	@GetMapping(value = "/greeting/{name}")
 	public List<Greeting> greeting(@PathVariable(value = "name") String name)
 	{
 		return greetingRepository.findByName(name);
 	}
 
-	@RequestMapping(value = "/greeting", method = RequestMethod.POST)
+	@PostMapping(value = "/greeting")
 	public Greeting greeting(@RequestBody GreetingRequest request)
 	{
 		return greetingRepository.save(new Greeting(request.getName(), request.getContent()));
