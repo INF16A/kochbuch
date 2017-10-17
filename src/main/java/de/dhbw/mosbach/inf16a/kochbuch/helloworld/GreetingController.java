@@ -1,25 +1,37 @@
 package de.dhbw.mosbach.inf16a.kochbuch.helloworld;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.List;
 
 /**
  * @author Patrick Hahn
+ * @author Annika Schatz
  */
 
 @RestController
 public class GreetingController
 {
 	private static final String template = "Hello, %s";
-	private final AtomicLong counter = new AtomicLong();
 
-	@RequestMapping(value = "/greeting", method = RequestMethod.GET)
-	public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name)
+	private final GreetingRepository greetingRepository;
+
+	@Autowired
+	public GreetingController(GreetingRepository greetingRepository)
 	{
-		return new Greeting(counter.incrementAndGet(), String.format(template, name));
+		this.greetingRepository = greetingRepository;
+	}
+
+	@GetMapping(value = "/greeting/{name}")
+	public List<Greeting> greeting(@PathVariable(value = "name") String name)
+	{
+		return greetingRepository.findByName(name);
+	}
+
+	@PostMapping(value = "/greeting")
+	public Greeting greeting(@RequestBody GreetingRequest request)
+	{
+		return greetingRepository.save(new Greeting(request.getName(), request.getContent()));
 	}
 }

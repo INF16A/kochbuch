@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @author Patrick Hahn
+ * @author Annika Schatz
  */
 
 @SpringBootApplication
