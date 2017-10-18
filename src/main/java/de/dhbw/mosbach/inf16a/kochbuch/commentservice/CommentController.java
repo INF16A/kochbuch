@@ -26,7 +26,7 @@ public class CommentController
 	@GetMapping(value = "/comments/{recipeID}")
 	public List<Comment> commentsForRecipe(@PathVariable(value = "recipeID") long recipeID)
 	{
-		return commentRepository.findByRecipeIDByOrderByCreationDateDesc(recipeID);
+		return commentRepository.findByRecipeIDOrderByCreationDateDesc(recipeID);
 	}
 
 	@PostMapping(value = "/comment")
