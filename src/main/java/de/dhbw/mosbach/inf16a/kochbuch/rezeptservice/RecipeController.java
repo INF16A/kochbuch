@@ -12,11 +12,8 @@ public class RecipeController {
 	@Autowired
 	private RecipeRepository recipeRepository;
 
-	@GetMapping(value = "/test")
+	@GetMapping(value = "/recipes")
 	public List<Recipe> recipe() {
-//		Recipe r = new Recipe();
-//		r.demodata();
-//		recipeRepository.save(r);
 		return recipeRepository.findAll();
 	}
 	
