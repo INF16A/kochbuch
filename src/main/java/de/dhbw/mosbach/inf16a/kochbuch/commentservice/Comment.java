@@ -37,7 +37,4 @@ public class Comment {
 	@NonNull
 	private long userID;
 
-	@NonNull
-	private long recipeID;
-
 }

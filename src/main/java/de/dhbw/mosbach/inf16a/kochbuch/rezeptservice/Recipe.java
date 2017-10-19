@@ -73,5 +73,8 @@ public class Recipe {
 	@OneToMany
 	@JoinColumn(name = "commentId")
 	private List<Comment> comments;
+	
+	@OneToMany(mappedBy = "recipe")
+	private List<RecipeIngredient> recipeIngredients;
 
 }
