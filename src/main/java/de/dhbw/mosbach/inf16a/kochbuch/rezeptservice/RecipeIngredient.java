@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -15,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 /**
  * 
  * @author Patrick Eichert
+ * @author Theresa Reus
  *
  */
 @Data
@@ -27,6 +29,7 @@ public class RecipeIngredient {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
+	@JsonIgnore
 	@NonNull
 	@ManyToOne
 	@JoinColumn(name = "recipeId")
@@ -47,6 +50,8 @@ public class RecipeIngredient {
 	private int amount;
 
 	@NonNull
-	private int costPerUnit;
+	private double costPerUnit;
+
+
 
 }

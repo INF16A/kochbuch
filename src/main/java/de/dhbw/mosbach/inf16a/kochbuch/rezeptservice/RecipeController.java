@@ -6,6 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * @author Theresa Reus
+ */
+
 @RestController
 public class RecipeController {
 
@@ -16,5 +20,9 @@ public class RecipeController {
 	public List<Recipe> recipe() {
 		return recipeRepository.findAll();
 	}
-	
+
+	@GetMapping(value="/recipe/{id}")
+	public Recipe getRecipeById(Long id) {
+		return recipeRepository.findOne(id);
+	}
 }
