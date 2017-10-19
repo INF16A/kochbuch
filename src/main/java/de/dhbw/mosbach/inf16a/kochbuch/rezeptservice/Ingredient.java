@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 /**
  * 
  * @author Patrick Eichert
+ * @author Theresa Reus
  *
  */
 @Data
@@ -34,13 +35,61 @@ public class Ingredient {
     private int unit;
 
     @NonNull
-    private int kcalPerUnit;
+    private double kcalPerUnit;
 
     @NonNull
-    private int costPerUnit;
+    private double costPerUnit;
 
 	@NonNull
 	@OneToOne
 	@JoinColumn(name = "picId")
 	private Picture pic;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getUnit() {
+        return unit;
+    }
+
+    public void setUnit(int unit) {
+        this.unit = unit;
+    }
+
+    public double getKcalPerUnit() {
+        return kcalPerUnit;
+    }
+
+    public void setKcalPerUnit(double kcalPerUnit) {
+        this.kcalPerUnit = kcalPerUnit;
+    }
+
+    public double getCostPerUnit() {
+        return costPerUnit;
+    }
+
+    public void setCostPerUnit(double costPerUnit) {
+        this.costPerUnit = costPerUnit;
+    }
+
+    public Picture getPic() {
+        return pic;
+    }
+
+    public void setPic(Picture pic) {
+        this.pic = pic;
+    }
 }
