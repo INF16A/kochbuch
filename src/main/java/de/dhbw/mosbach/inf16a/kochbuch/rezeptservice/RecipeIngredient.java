@@ -1,10 +1,11 @@
 package de.dhbw.mosbach.inf16a.kochbuch.rezeptservice;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,14 +21,32 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Picture {
+public class RecipeIngredient {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "picId")
 	private long id;
 
 	@NonNull
-	private String picData;
+	@ManyToOne
+	@JoinColumn(name = "recipeId")
+	private Recipe recipe;
+
+	@NonNull
+	@ManyToOne
+	@JoinColumn(name = "ingredientId")
+	private Ingredient ingredient;
+
+	@NonNull
+	private String name;
+
+	@NonNull
+	private int amountpp;
+
+	@NonNull
+	private int amount;
+
+	@NonNull
+	private int costPerUnit;
 
 }
