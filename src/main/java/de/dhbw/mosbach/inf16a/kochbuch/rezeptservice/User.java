@@ -2,6 +2,7 @@ package de.dhbw.mosbach.inf16a.kochbuch.rezeptservice;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,6 +26,7 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "userId")
 	private long id;
 
 	@NonNull

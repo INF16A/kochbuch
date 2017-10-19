@@ -1,9 +1,12 @@
 package de.dhbw.mosbach.inf16a.kochbuch.rezeptservice;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,20 +24,23 @@ import lombok.RequiredArgsConstructor;
 @Entity
 public class PreperationStep {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "preStepId", nullable = false)
+	private long id;
 
-    @NonNull
-    private long recipeId;
+	@NonNull
+	private int stepCount;
 
-    @NonNull
-    private int stepCount;
+	@NonNull
+	private int effort;
 
-    @NonNull
-    private int effort;
+	@NonNull
+	private String description;
 
-    @NonNull
-    private String description;
+	@NonNull
+	@OneToOne
+	@JoinColumn(name = "picId")
+	private Picture pic;
 
 }

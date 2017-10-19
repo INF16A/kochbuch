@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -37,7 +39,8 @@ public class Ingredient {
     @NonNull
     private int costPerUnit;
 
-    @NonNull
-    private int imgId;
-
+	@NonNull
+	@OneToOne
+	@JoinColumn(name = "picId")
+	private Picture pic;
 }
