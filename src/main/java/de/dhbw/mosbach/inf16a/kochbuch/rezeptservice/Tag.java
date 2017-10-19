@@ -1,5 +1,8 @@
 package de.dhbw.mosbach.inf16a.kochbuch.rezeptservice;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,11 +24,22 @@ import lombok.RequiredArgsConstructor;
 @Entity
 public class Tag {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
-    @NonNull
-    private String name;
+	@NonNull
+	private String name;
 
+	public static List<Tag> demo() {
+		List<Tag> t = new ArrayList<>();
+
+		for (int i = 0; i < 8; i++) {
+			Tag s = new Tag();
+			s.name = "blub" + i;
+			t.add(s);
+		}
+
+		return t;
+	}
 }
