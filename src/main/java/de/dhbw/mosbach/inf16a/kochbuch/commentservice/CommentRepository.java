@@ -11,6 +11,6 @@ import java.util.List;
 public interface CommentRepository extends CrudRepository<Comment, Long>
 {
 	List<Comment> findByUserIDOrderByCreationDateDesc(long userID);
-	List<Comment> findByRecipeIDOrderByCreationDateDesc(long recipeID);
+//	List<Comment> findByRecipeIDOrderByCreationDateDesc(long recipeID);
 	List<Comment> findAllByOrderByCreationDateDesc();
 }
