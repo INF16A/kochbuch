@@ -23,11 +23,11 @@ public class CommentController
 		return commentRepository.findAllByOrderByCreationDateDesc();
 	}
 
-	@GetMapping(value = "/comments/{recipeID}")
-	public List<Comment> commentsForRecipe(@PathVariable(value = "recipeID") long recipeID)
-	{
-		return commentRepository.findByRecipeIDOrderByCreationDateDesc(recipeID);
-	}
+//	@GetMapping(value = "/comments/{recipeID}")
+//	public List<Comment> commentsForRecipe(@PathVariable(value = "recipeID") long recipeID)
+//	{
+//		return commentRepository.findByRecipeIDOrderByCreationDateDesc(recipeID);
+//	}
 
 	@PostMapping(value = "/comment")
 	public Comment addComment(@RequestBody Comment theNewComment)

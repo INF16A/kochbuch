@@ -1,11 +1,13 @@
 package de.dhbw.mosbach.inf16a.kochbuch.rezeptservice;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -21,29 +23,35 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Tag {
+public class RecipeIngredient {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "tagId", nullable = false)
-	private Long id;
+	private long id;
+
+	@JsonIgnore
+	@NonNull
+	@ManyToOne
+	@JoinColumn(name = "recipeId")
+	private Recipe recipe;
+
+	@NonNull
+	@ManyToOne
+	@JoinColumn(name = "ingredientId")
+	private Ingredient ingredient;
 
 	@NonNull
 	private String name;
 
-	public Long getId() {
-		return id;
-	}
+	@NonNull
+	private int amountpp;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+	@NonNull
+	private int amount;
 
-	public String getName() {
-		return name;
-	}
+	@NonNull
+	private double costPerUnit;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+
+
 }
