@@ -37,7 +37,7 @@ public class Recipe {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "rezeptId", nullable = false)
-	private Long id;
+	private long id;
 
 	@NonNull
 	private String name;
