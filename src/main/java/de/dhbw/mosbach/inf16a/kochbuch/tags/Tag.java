@@ -1,4 +1,4 @@
-package de.dhbw.mosbach.inf16a.kochbuch.rezeptservice;
+package de.dhbw.mosbach.inf16a.kochbuch.tags;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

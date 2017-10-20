@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import de.dhbw.mosbach.inf16a.kochbuch.commentservice.Comment;
+import de.dhbw.mosbach.inf16a.kochbuch.tags.Tag;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
