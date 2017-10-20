@@ -1,7 +1,8 @@
-package de.dhbw.mosbach.inf16a.kochbuch.rezeptservice;
+package de.dhbw.mosbach.inf16a.kochbuch.ingredientservice;
 
 
 
+import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.Picture;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
