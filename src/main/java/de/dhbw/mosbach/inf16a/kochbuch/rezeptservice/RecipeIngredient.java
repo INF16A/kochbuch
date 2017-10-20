@@ -17,6 +17,7 @@ import lombok.RequiredArgsConstructor;
  * 
  * @author Patrick Eichert
  * @author Theresa Reus
+ * @author André Berberich
  *
  */
 @Data
@@ -41,10 +42,7 @@ public class RecipeIngredient {
 	private Ingredient ingredient;
 
 	@NonNull
-	private String name;
-
-	@NonNull
-	private int amountpp;
+	private int amountPerPerson;
 
 	@NonNull
 	private int amount;
