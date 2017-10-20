@@ -1,11 +1,6 @@
 package de.dhbw.mosbach.inf16a.kochbuch.rezeptservice;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +11,7 @@ import lombok.RequiredArgsConstructor;
  * 
  * @author Patrick Eichert
  * @author Theresa Reus
+ * @author André Berberich
  *
  */
 @Data
@@ -29,13 +25,14 @@ public class Ingredient {
     private long id;
 
     @NonNull
+    @Column(length = 48)
     private String name;
 
     @NonNull
     private int unit;
 
     @NonNull
-    private double kcalPerUnit;
+    private double kCalPerUnit;
 
     @NonNull
     private double costPerUnit;
@@ -70,11 +67,11 @@ public class Ingredient {
     }
 
     public double getKcalPerUnit() {
-        return kcalPerUnit;
+        return kCalPerUnit;
     }
 
     public void setKcalPerUnit(double kcalPerUnit) {
-        this.kcalPerUnit = kcalPerUnit;
+        this.kCalPerUnit = kcalPerUnit;
     }
 
     public double getCostPerUnit() {
