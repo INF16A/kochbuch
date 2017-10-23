@@ -8,7 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import de.dhbw.mosbach.inf16a.kochbuch.ingredientservice.Ingredient;
+
 import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.Recipe;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,6 +20,7 @@ import lombok.RequiredArgsConstructor;
  * @author Patrick Eichert
  * @author Theresa Reus
  * @author André Berberich
+ * @author Thomas Hörner
  *
  */
 @Data
@@ -44,14 +45,12 @@ public class RecipeIngredient {
 	private Ingredient ingredient;
 
 	@NonNull
-	private int amountPerPerson;
+	private Integer amountPerPerson;
 
 	@NonNull
-	private int amount;
+	private Integer amount;
 
 	@NonNull
-	private double costPerUnit;
-
-
+	private Double costPerUnit;
 
 }
