@@ -8,6 +8,10 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * @author Team Chrocorg: Christian Werner, Yoco Harrmann und Georg Frey
+ */
+
 public class RezeptListenController {
 
     @Autowired
