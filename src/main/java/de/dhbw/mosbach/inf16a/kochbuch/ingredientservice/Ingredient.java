@@ -1,4 +1,4 @@
-package de.dhbw.mosbach.inf16a.kochbuch.rezeptservice;
+package de.dhbw.mosbach.inf16a.kochbuch.ingredientservice;
 
 
 
@@ -14,6 +14,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+
+import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.Picture;
 
 /**
  * 

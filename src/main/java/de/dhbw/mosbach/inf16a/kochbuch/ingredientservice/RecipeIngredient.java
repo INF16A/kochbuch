@@ -8,9 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.Ingredient;
-import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.Recipe;
 
+import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.Recipe;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
