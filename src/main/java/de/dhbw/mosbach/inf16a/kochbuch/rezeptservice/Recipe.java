@@ -3,18 +3,9 @@ package de.dhbw.mosbach.inf16a.kochbuch.rezeptservice;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
+import de.dhbw.mosbach.inf16a.kochbuch.Voting.Voting;
 import de.dhbw.mosbach.inf16a.kochbuch.commentservice.Comment;
 import de.dhbw.mosbach.inf16a.kochbuch.ingredientservice.RecipeIngredient;
 import lombok.Data;
@@ -76,6 +67,9 @@ public class Recipe {
 
 	@OneToMany(mappedBy = "recipe")
 	private List<RecipeIngredient> recipeIngredients;
+
+	@OneToMany(mappedBy ="recipe")//jedes Rezept kann öfters gevoted werden
+	private List<Voting> voting;
 
 	public Long getId() {
 		return id;
@@ -140,6 +134,7 @@ public class Recipe {
 	public void setPics(List<Picture> pics) {
 		this.pics = pics;
 	}
+
 
 //	public List<PreperationStep> getPreSteps() {
 //		return preSteps;
