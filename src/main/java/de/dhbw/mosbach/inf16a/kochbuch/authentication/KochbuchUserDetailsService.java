@@ -15,7 +15,6 @@ public class KochbuchUserDetailsService implements UserDetailsService
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
 	{
-		System.out.println("userdetailsservice " + username);
 		return new KochbuchUserPrincipal(
 				userRepository
 						.findByUsername(username)

@@ -11,7 +11,6 @@ public class KochbuchUserPrincipal implements UserDetails
 
 	public KochbuchUserPrincipal(User user)
 	{
-		System.out.println(user.getUsername() + user.getPassword());
 		this.user = user;
 	}
 

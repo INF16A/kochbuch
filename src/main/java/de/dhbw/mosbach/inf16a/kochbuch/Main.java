@@ -1,8 +1,6 @@
 package de.dhbw.mosbach.inf16a.kochbuch;
 
-import de.dhbw.mosbach.inf16a.kochbuch.authentication.AuthenticationFailedHandler;
-import de.dhbw.mosbach.inf16a.kochbuch.authentication.AuthenticationSuccessHandler;
-import de.dhbw.mosbach.inf16a.kochbuch.authentication.HttpAuthenticationEntryPoint;
+import de.dhbw.mosbach.inf16a.kochbuch.authentication.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,6 +12,7 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 
 /**
  * @author Patrick Hahn
@@ -44,24 +43,40 @@ public class Main
 		@Autowired
 		private AuthenticationFailedHandler failedHandler;
 
+		@Autowired
+		private KochbuchSecurityContextRepository securityContextRepository;
+
+		@Autowired
+		private KochbuchLogoutSuccessHandler logoutSuccessHandler;
+
 		@Override
 		protected void configure(HttpSecurity http) throws Exception
 		{
-			http
-					.authenticationProvider(authenticationProvider)
-					.exceptionHandling().authenticationEntryPoint(entryPoint)
-					.and()
-					.formLogin()
-					.loginPage("/login")
+			http.exceptionHandling()
+					.authenticationEntryPoint(entryPoint);
+
+			http.formLogin()
 					.loginProcessingUrl("/login")
-					.usernameParameter("username")
-					.passwordParameter("password")
 					.successHandler(successHandler)
-					.failureHandler(failedHandler)
-					.and()
-					.csrf().disable()
-					.authorizeRequests()
+					.failureHandler(failedHandler);
+
+			http.logout()
+					.logoutUrl("/logout")
+					.logoutSuccessHandler(logoutSuccessHandler);
+
+			http.securityContext()
+					.securityContextRepository(securityContextRepository);
+
+			http.sessionManagement()
+					.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
+			http.csrf().disable();
+
+			//http.authenticationProvider(authenticationProvider);
+
+			http.authorizeRequests()
 					.antMatchers(HttpMethod.POST, "/comment").authenticated()
+					.antMatchers(HttpMethod.GET, "/auth/user").authenticated()
 					.anyRequest().permitAll();
 		}
 

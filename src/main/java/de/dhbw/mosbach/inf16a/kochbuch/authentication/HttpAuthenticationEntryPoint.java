@@ -19,7 +19,6 @@ public class HttpAuthenticationEntryPoint implements AuthenticationEntryPoint
 	@Override
 	public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException
 	{
-		System.out.println("Authentication Entry point!");
 		httpServletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, e.getMessage());
 	}
 }
