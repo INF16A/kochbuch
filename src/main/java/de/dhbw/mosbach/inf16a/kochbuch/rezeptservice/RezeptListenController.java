@@ -19,12 +19,12 @@ public class RezeptListenController {
     @Autowired
     private RecipeRepository recipeRepository;
 
-    @RequestMapping("/getRecipesbyTag")
+    // @RequestMapping("/getRecipesbyTag")
 
     @GetMapping(value = "/recipes/{tag}")
     public List<Recipe> getRecipesByTag(String tag) {
         List hilfsarray = recipeRepository.findAll();    //Alle Rezepte ins Hilfsarray reinspeichern
-        Iterator<Recipe> iter = hilfsarray.iterator();
+        Iterator<Recipe> iter = hilfsarray.iterator();   //Alle nichtpassenden Rezepte wieder rauswerfen
         while (iter.hasNext()) {
             Recipe rep = iter.next();
             if(! rep.getTags().contains(tag)){
