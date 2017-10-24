@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
  * 
  * @author Patrick Eichert
  * @author Theresa Reus
+ * @author Thomas Hörner
  *
  */
 @Data
@@ -31,19 +32,4 @@ public class Picture {
 	@NonNull
 	private String picData;
 
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getPicData() {
-		return picData;
-	}
-
-	public void setPicData(String picData) {
-		this.picData = picData;
-	}
 }
