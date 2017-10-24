@@ -1,7 +1,5 @@
 package de.dhbw.mosbach.inf16a.kochbuch.ingredientservice;
 
-import javax.persistence.*;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.Recipe;
@@ -9,6 +7,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.PostLoad;
+import javax.persistence.Transient;
 
 /**
  * 
