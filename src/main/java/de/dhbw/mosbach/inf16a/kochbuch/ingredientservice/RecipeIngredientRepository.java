@@ -6,9 +6,11 @@ import java.util.List;
 
 /**
  * @author Robert Zebec
+ * @author André Berberich
  */
 
 public interface RecipeIngredientRepository extends CrudRepository<RecipeIngredient, RecipeIngredientKey> {
-    //RecipeIngredient findFirstById(RecipeIngredientKey id);
+    List<RecipeIngredient> findAllByRecipeId(long recipeId);
+    List<RecipeIngredient> findAllByIngredientId(long ingredientId);
     List<RecipeIngredient> findAll();
 }

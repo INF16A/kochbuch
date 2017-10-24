@@ -15,12 +15,17 @@ import java.util.List;
 public class RecipeIngredientController {
 	@Autowired
     private RecipeIngredientRepository recipeIngredientRepository;
-/*
-	@GetMapping(value = "/recipeIngredient/{id}")
-	public RecipeIngredient getRecipeIngredientById(@PathVariable(value = "id") long id) {
-		return recipeIngredientRepository.findFirstById(id);
+
+	@GetMapping(value = "/recipeIngredient/recipe/{recipeId}")
+	public List<RecipeIngredient> getRecipeIngredientsByRecipeId(@PathVariable(value = "recipeId") long recipeId) {
+		return recipeIngredientRepository.findAllByRecipeId(recipeId);
 	}
-*/
+
+	@GetMapping(value = "/recipeIngredient/ingredient/{ingredientId}")
+	public List<RecipeIngredient> getRecipeIngredientsByIngredientId(@PathVariable(value = "ingredientId") long ingredientId) {
+		return recipeIngredientRepository.findAllByIngredientId(ingredientId);
+	}
+
 	@GetMapping(value = "/recipeIngredients")
 	public List<RecipeIngredient> recipeIngredients()
 	{

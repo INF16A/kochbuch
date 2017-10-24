@@ -16,6 +16,7 @@ import lombok.RequiredArgsConstructor;
  * @author Theresa Reus
  * @author André Berberich
  * @author Thomas Hörner
+ * @author Robert Zebec
  *
  */
 @Data
@@ -32,11 +33,29 @@ public class RecipeIngredient {
 	@JoinColumn(name = "recipeId")
 	private Recipe recipe;
 
+	@JsonIgnore
 	@NonNull
 	@Id
 	@ManyToOne
 	@JoinColumn(name = "ingredientId")
 	private Ingredient ingredient;
+
+	/**
+	 *  The Transient and PostLoad stuff is used to only include
+	 *  the IDs of the referenced entities in the JSON output
+	*/
+
+	@Transient
+	private Long linkedRecipeId;
+
+	@Transient
+	private Long linkedIngredientId;
+
+	@PostLoad
+	public void onPostLoad() {
+		this.linkedRecipeId = recipe.getId();
+		this.linkedIngredientId = ingredient.getId();
+	}
 
 	@NonNull
 	private Integer amountPerPerson;
