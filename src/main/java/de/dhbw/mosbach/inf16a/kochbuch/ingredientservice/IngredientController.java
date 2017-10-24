@@ -1,9 +1,7 @@
 package de.dhbw.mosbach.inf16a.kochbuch.ingredientservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,5 +23,11 @@ public class IngredientController {
     @GetMapping(value="/ingredient/{id}")
     public Ingredient getIngredientById(@PathVariable(value = "id")Long id) {
         return ingredientRepository.findFirstById(id);
+    }
+
+    @PostMapping(value = "/ingredient")
+    public Ingredient addIngredient(@ModelAttribute Ingredient newIngredient)
+    {
+        return this.ingredientRepository.save(newIngredient);
     }
 }
