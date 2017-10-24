@@ -6,6 +6,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
 
+/**
+ * @author Patrick Hahn
+ * @author Armin Beck
+ * @author Leandro Späth
+ */
+
+
 @RestController("/auth/user")
 public class UserController
 {

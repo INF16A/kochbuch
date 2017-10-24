@@ -6,6 +6,13 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+/**
+ * @author Patrick Hahn
+ * @author Armin Beck
+ * @author Leandro Späth
+ */
+
+
 @Service
 public class KochbuchUserDetailsService implements UserDetailsService
 {

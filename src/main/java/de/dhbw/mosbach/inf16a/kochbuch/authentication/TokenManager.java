@@ -13,6 +13,13 @@ import java.time.ZoneOffset;
 import java.util.Date;
 import java.util.Optional;
 
+/**
+ * @author Patrick Hahn
+ * @author Armin Beck
+ * @author Leandro Späth
+ */
+
+
 @Component
 public class TokenManager
 {

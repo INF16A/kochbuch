@@ -11,6 +11,13 @@ import org.springframework.stereotype.Component;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * @author Patrick Hahn
+ * @author Armin Beck
+ * @author Leandro Späth
+ */
+
+
 @Component
 public class KochbuchSecurityContextRepository implements SecurityContextRepository
 {

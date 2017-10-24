@@ -5,6 +5,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
+/**
+ * @author Patrick Hahn
+ * @author Armin Beck
+ * @author Leandro Späth
+ */
+
+
 public class KochbuchUserPrincipal implements UserDetails
 {
 	private final User user;

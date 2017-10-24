@@ -17,7 +17,11 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 /**
  * @author Patrick Hahn
  * @author Annika Schatz
+ * @author Armin Beck
+ * @author Leandro Späth
  */
+
+
 
 @SpringBootApplication
 public class Main

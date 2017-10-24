@@ -9,9 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+
 /**
  * @author Patrick Hahn
+ * @author Armin Beck
+ * @author Leandro Späth
  */
+
+
 
 @Component
 public class HttpAuthenticationEntryPoint implements AuthenticationEntryPoint
