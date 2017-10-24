@@ -15,6 +15,11 @@ public class KochbuchUserPrincipal implements UserDetails
 		this.user = user;
 	}
 
+	public User getUser()
+	{
+		return user;
+	}
+
 	@Override
 	public boolean isEnabled()
 	{

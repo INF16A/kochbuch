@@ -30,7 +30,7 @@ public class AuthenticationSuccessHandler extends SavedRequestAwareAuthenticatio
 		KochbuchUserPrincipal principal = (KochbuchUserPrincipal) authentication.getPrincipal();
 		PrintWriter writer = response.getWriter();
 
-		mapper.writeValue(writer, principal);
+		mapper.writeValue(writer, principal.getUser());
 		writer.flush();
 	}
 }

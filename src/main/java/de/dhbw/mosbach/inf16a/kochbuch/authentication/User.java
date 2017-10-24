@@ -1,5 +1,6 @@
 package de.dhbw.mosbach.inf16a.kochbuch.authentication;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -21,5 +22,6 @@ public class User
 	@NonNull
 	private String username;
 
+	@JsonIgnore
 	private String password;
 }
