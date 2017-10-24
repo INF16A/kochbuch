@@ -9,17 +9,18 @@ import java.util.List;
 
 /**
  * @author Robert Zebec
+ * @author André Berberich
  */
 @RestController
 public class RecipeIngredientController {
 	@Autowired
     private RecipeIngredientRepository recipeIngredientRepository;
-
+/*
 	@GetMapping(value = "/recipeIngredient/{id}")
 	public RecipeIngredient getRecipeIngredientById(@PathVariable(value = "id") long id) {
 		return recipeIngredientRepository.findFirstById(id);
 	}
-
+*/
 	@GetMapping(value = "/recipeIngredients")
 	public List<RecipeIngredient> recipeIngredients()
 	{

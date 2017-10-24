@@ -1,11 +1,6 @@
 package de.dhbw.mosbach.inf16a.kochbuch.ingredientservice;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -26,20 +21,19 @@ import lombok.RequiredArgsConstructor;
 @Data
 @RequiredArgsConstructor
 @NoArgsConstructor
+@IdClass(RecipeIngredientKey.class)
 @Entity
 public class RecipeIngredient {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
-
 	@JsonIgnore
+	@Id
 	@NonNull
 	@ManyToOne
 	@JoinColumn(name = "recipeId")
 	private Recipe recipe;
 
 	@NonNull
+	@Id
 	@ManyToOne
 	@JoinColumn(name = "ingredientId")
 	private Ingredient ingredient;
