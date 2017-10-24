@@ -11,7 +11,7 @@ INSERT INTO `ingredient` (`id`, `cost_per_unit`, `k_cal_per_unit`, `name`, `unit
 
 INSERT INTO `recipe` (`rezept_id`, `create_date`, `description`, `difficulty`, `name`, `user_id`) VALUES (NULL, '2017-10-08 00:00:00', 'Leckere Kartoffeln mit Käse - das beste was man mit Kartoffeln machen kann', '1', 'Kartoffeln mit Käse', '1');
 
-INSERT INTO `recipe_ingredient` (`id`, `amount`, `amount_per_person`, `cost_per_unit`, `ingredient_id`, `recipe_id`) VALUES (NULL, '1000', '500', '0.0007996',  '1', '1'), (NULL, '200', '100', '0.01125', '2', '1');
+INSERT INTO `recipe_ingredient` (`amount`, `amount_per_person`, `cost_per_unit`, `ingredient_id`, `recipe_id`) VALUES ('1000', '500', '0.0007996',  '1', '1'), ( '200', '100', '0.01125', '2', '1');
 
 INSERT INTO `recipe_tags` (`rezept_id`, `tag_id`) VALUES ('1', '3'), ('1', '1');
 

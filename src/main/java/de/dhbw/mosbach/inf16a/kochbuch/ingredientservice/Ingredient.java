@@ -23,6 +23,7 @@ import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.Picture;
  * @author Theresa Reus
  * @author André Berberich
  * @author Thomas Hörner
+ * @author Robert Zebec
  *
  */
 @Data
@@ -53,4 +54,7 @@ public class Ingredient {
 	@JoinColumn(name = "picId")
 	private Picture pic;
 
+	public Long getId() {
+		return this.id;
+	}
 }

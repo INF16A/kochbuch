@@ -28,6 +28,8 @@ import lombok.RequiredArgsConstructor;
  * @author Patrick Eichert
  * @author Theresa Reus
  * @author Thomas Hörner
+ * @author André Berberich
+ * @author Robert Zebec
  *
  */
 @Data
@@ -78,5 +80,9 @@ public class Recipe {
 
 	@OneToMany(mappedBy = "recipe")
 	private List<RecipeIngredient> recipeIngredients;
+
+	public Long getId() {
+		return this.id;
+	}
 
 }
