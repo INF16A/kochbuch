@@ -12,7 +12,8 @@
 7. Testdaten liegen in `kochbuch/src/main/resources/sql_recipes.sql` -> Den Inhalt in http://localhost/phpmyadmin/ unter dem Reiter SQL ausführen. 
 8. Bei Fragen an Patrick Hahn wenden, er hat die Ahnung. 
 
-# Quickstart Guide für etwas schlauere Leute (für die, die Docker haben):
+# Quickstart Guide für etwas schlauere Leute (mit Docker):
+0. Docker installieren (Docker + Docker Toolbox)
 1. Repository im Arbeitsverzeichnis klonen `git clone https://github.com/INF16A/kochbuch.git`
 2. Dockershell im Arbeitsverzeichnis; Container starten `docker-compose up -d`
 3. Mit Maven Clean Install machen, z.B. per Konsole oder IntelliJ möglich.
