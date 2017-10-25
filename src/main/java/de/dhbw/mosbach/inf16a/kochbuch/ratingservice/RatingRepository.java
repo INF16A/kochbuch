@@ -12,7 +12,7 @@ public interface RatingRepository extends CrudRepository<Rating, Long> {
 
     List<Rating> findByRecipeId(long recipeID);
 
-    //long countByRecipeIDByValue(long recipeID, int value);
+    //long countByRecipeIdByValue(long recipeID, int value);
 
     //List<Rating> findAllByRecipeIDByValue(long recipeID, int value);
     //long count(findByRecipeIDWhereValue=1);

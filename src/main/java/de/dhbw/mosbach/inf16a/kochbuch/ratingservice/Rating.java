@@ -26,6 +26,7 @@ public class Rating {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ratingId", nullable = false)
     private long id;
 
     @NonNull

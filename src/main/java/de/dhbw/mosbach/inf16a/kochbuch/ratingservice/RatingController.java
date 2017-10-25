@@ -28,20 +28,22 @@ public class RatingController {
     @PostMapping(value = "/rate")
     public Rating updateRating(@RequestBody Rating theNewRating)
     {
-        return this.ratingRepository.save(theNewRating);    //Wird überschrieben?
+        return this.ratingRepository.save(theNewRating);    //Wird überschrieben oder hinzugefügt?
     }
 
     @GetMapping(value="/rating/{recipeID}/count/up")
     public long countUpVote(@PathVariable(value = "recipeID") long recipeID)
     {
-        //return ratingRepository.countByRecipeIDByValue(recipeID, 1);
+        //int i = 1;
+        //return ratingRepository.countByRecipeIdByValue(recipeID, i);
         return 1;
     }
 
     @GetMapping(value="/rating/{recipeID}/count/down")
     public long countDownVote(@PathVariable(value = "recipeID") long recipeID)
     {
-        //return ratingRepository.countByRecipeIDByValue(recipeID, -1);
+        //int i = -1;
+        //return ratingRepository.countByRecipeIdByValue(recipeID, i);
         return -1;
     }
 }

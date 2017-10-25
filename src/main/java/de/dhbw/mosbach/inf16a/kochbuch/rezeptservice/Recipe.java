@@ -1,5 +1,20 @@
 package de.dhbw.mosbach.inf16a.kochbuch.rezeptservice;
 
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 import de.dhbw.mosbach.inf16a.kochbuch.commentservice.Comment;
 import de.dhbw.mosbach.inf16a.kochbuch.ingredientservice.RecipeIngredient;
 import de.dhbw.mosbach.inf16a.kochbuch.ratingservice.Rating;
@@ -8,10 +23,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-
-import javax.persistence.*;
-import java.util.Date;
-import java.util.List;
 
 /**
  * 
@@ -48,7 +59,7 @@ public class Recipe {
 	@NonNull
 	@ManyToOne
 	@JoinColumn(name = "userId")
-	private RezeptUser creator;
+	private User creator;
 
 	@NonNull
 	@ManyToMany(cascade = CascadeType.ALL)
@@ -72,7 +83,7 @@ public class Recipe {
 	private List<RecipeIngredient> recipeIngredients;
 
 	@NonNull
-	@OneToMany
+	@OneToMany(mappedBy = "recipe")
 	private List<Rating> ratings;
 
 	public Long getId() {
