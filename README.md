@@ -1,16 +1,16 @@
 <!-- 
-@author Patrick Hahn
-@author Armin Beck
+@author Yoco Harrmann
 -->
 # Quickstart Guide für nicht so schlaue Leute: 
-1. Projekt als .zip von Github [herunterladen](https://github.com/INF16A/kochbuch/archive/master.zip) und entpacken
-2. In IntelliJ öffnen. Über View -> Tool Windows -> Maven Projects den Button "Execute Maven Goal" klicken und dort `mvn install` eingeben und ausführen (Falls nichts passiert, VirenScanner deaktivieren). 
+1. Projekt mit der git-bash von Github [herunterladen](https://github.com/INF16A/kochbuch/archive/master.zip) und entpacken (Befehl: `git clone https://github.com/INF16A/kochbuch.git`) 
+2. In IntelliJ öffnen. Über View -> Tool Windows -> Maven Projects den Button "Execute Maven Goal" klicken und dort `mvn install` eingeben und ausführen (Falls nichts passiert den VirenScanner deaktivieren). 
 3. XAMPP runterladen und installieren. Dann die Module MySQL und Apache starten. Darauf achten, dass der Port 3306 bei MySQL angezeigt wird, ansonsten PC neustarten und hoffen, dass es beim nächsten mal klappt. 
 4. http://localhost/phpmyadmin/ aufrufen und eine Datenbank mit dem Namen `kochbuch` anlegen. 
 5. Bei dem `mvn install` wird in dem `kochbuch/target/` Ordner eine .jar-Datei erzeugt, diese mit der Powershell ausführen. Befehl dazu lautet: `java -jar .\kochbuch-1.0.0.jar`
 6. http://localhost:8080/swagger-ui.html aufrufen und hoffen, dass es funktioniert.
 7. Testdaten liegen in `kochbuch/src/main/resources/sql_recipes.sql` -> Den Inhalt in http://localhost/phpmyadmin/ unter dem Reiter SQL ausführen. 
-8. Bei Fragen an Patrick Hahn wenden, er hat die Ahnung. 
+8. Bei Fragen an [Patrick Hahn (@patrick246)](https://telegram.me/patrick246) wenden, er hat die Ahnung. 
+<!-- Ende Yoco-Teil -->
 
 # Quickstart Guide für etwas schlauere Leute (mit Docker):
 0. Docker installieren (Docker + Docker Toolbox)
@@ -23,6 +23,10 @@
 5. Wenn alles soweit erfolgreich war, sollte [Swagger](http://localhost:8080/swagger-ui.html) funktionieren.
 6. Bei Fragen an Patrick Hahn wenden.  
 
+<!-- 
+@author Patrick Hahn
+@author Armin Beck
+-->
 # Kochbuch Webservice
 Der Kochbuch Webservice ist ein Projekt des Kurses INF16A, das im Kurs Web Engineering II durchgeführt wird.
 
