@@ -1,8 +1,12 @@
 <!-- 
 @author Patrick Hahn
+@author Armin Beck
 -->
 # Kochbuch Webservice
 Der Kochbuch Webservice ist ein Projekt des Kurses INF16A, das im Kurs Web Engineering II durchgeführt wird.
+
+## mysql mit Docker
+Um sich die MySQL lokal bereitzustellen, ohne manuell eine MySQL installieren zu müssen. Dafür kann man mithilfe von Docker-Compose die Datenbank bereitstellen lassen. Mit dem Befehl `docker-compose up -d` startet man die Datenbank (der Parameter -d lässt die DB ähnlich eines Daemons laufen). Um die Datenbank zu stoppen verwendet man `docker-compose down`.
 
 ## Build
 Als Buildsystem wird Maven verwendet. Nach der Installation von Maven kann das Projekt mit `mvn install` gebaut werden.
