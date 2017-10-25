@@ -45,6 +45,11 @@ public class KochbuchSecurityContextRepository implements SecurityContextReposit
 	{
 		if(securityContext.getAuthentication() == null)
 			return;
+
+		System.out.println(securityContext.getAuthentication());
+		if(!securityContext.getAuthentication().isAuthenticated()) {
+			return;
+		}
 		if(httpServletResponse.getHeader(TokenManager.TOKEN_HEADER) == null) {
 			httpServletResponse.addHeader(TokenManager.TOKEN_HEADER, tokenManager.createTokenFrom(securityContext.getAuthentication()));
 		}

@@ -13,10 +13,10 @@ import java.security.Principal;
  */
 
 
-@RestController("/auth/user")
+@RestController
 public class UserController
 {
-	@GetMapping
+	@GetMapping("/auth/user")
 	public User getUser(Principal principal)
 	{
 		return ((KochbuchUserPrincipal)((UsernamePasswordAuthenticationToken)principal).getPrincipal()).getUser();

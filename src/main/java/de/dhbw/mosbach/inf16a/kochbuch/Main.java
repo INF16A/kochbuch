@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.savedrequest.NullRequestCache;
 
 /**
  * @author Patrick Hahn
@@ -78,9 +79,11 @@ public class Main
 
 			//http.authenticationProvider(authenticationProvider);
 
+			http.requestCache().requestCache(new NullRequestCache());
+
 			http.authorizeRequests()
-					.antMatchers(HttpMethod.POST, "/comment").authenticated()
-					.antMatchers(HttpMethod.GET, "/auth/user").authenticated()
+					.antMatchers(HttpMethod.POST, "/comment").hasRole("USER")
+					.antMatchers(HttpMethod.GET, "/auth/user").hasRole("USER")
 					.anyRequest().permitAll();
 		}
 
