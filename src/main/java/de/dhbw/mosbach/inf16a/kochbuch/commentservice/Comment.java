@@ -41,12 +41,22 @@ public class Comment {
 	@NonNull
 	private Date creationDate;
 
-	@NonNull
-	private Long userID;
+	// @JsonIgnore
+	// @NonNull
+	// @ManyToOne
+	@JoinColumn(name = "userId")
+	private Long userId;
 
 	@JsonIgnore
 	@NonNull
 	@ManyToOne
 	@JoinColumn(name = "rezeptId")
 	private Recipe recipe;
+
+	public Comment(String text, Date creationDate, long userID, Recipe recipe){
+		this.text = text;
+		this.creationDate = creationDate;
+		this.userId = userID;
+		this.recipe = recipe;
+	}
 }
