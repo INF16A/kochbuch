@@ -21,8 +21,9 @@ public class RecipeController {
 		return recipeRepository.findAll();
 	}
 
-	@GetMapping(value="/recipe/{id}")
+	@GetMapping(value = "/recipe/{id}")
 	public Recipe getRecipeById(Long id) {
 		return recipeRepository.findOne(id);
 	}
+
 }

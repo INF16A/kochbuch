@@ -17,6 +17,7 @@ import lombok.RequiredArgsConstructor;
  * 
  * @author Patrick Eichert
  * @author Theresa Reus
+ * @author Thomas Hörner
  *
  */
 @Data
@@ -42,43 +43,4 @@ public class User {
 	@NonNull
 	private Date deletionDate;
 
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPwHash() {
-		return pwHash;
-	}
-
-	public void setPwHash(String pwHash) {
-		this.pwHash = pwHash;
-	}
-
-	public Date getCreationDate() {
-		return creationDate;
-	}
-
-	public void setCreationDate(Date creationDate) {
-		this.creationDate = creationDate;
-	}
-
-	public Date getDeletionDate() {
-		return deletionDate;
-	}
-
-	public void setDeletionDate(Date deletionDate) {
-		this.deletionDate = deletionDate;
-	}
 }

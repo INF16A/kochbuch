@@ -1,4 +1,4 @@
-package de.dhbw.mosbach.inf16a.kochbuch.rezeptservice;
+package de.dhbw.mosbach.inf16a.kochbuch.tags;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,21 +15,20 @@ import lombok.RequiredArgsConstructor;
  * 
  * @author Patrick Eichert
  * @author Theresa Reus
- * @author Thomas Hörner
  *
  */
 @Data
 @RequiredArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Picture {
+public class Tag {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "picId")
+	@Column(name = "tagId", nullable = false)
 	private long id;
 
 	@NonNull
-	private String picData;
+	private String name;
 
 }
