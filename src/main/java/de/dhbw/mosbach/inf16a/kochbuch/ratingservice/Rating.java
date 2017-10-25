@@ -2,6 +2,7 @@ package de.dhbw.mosbach.inf16a.kochbuch.ratingservice;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.Recipe;
+import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.User;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -30,7 +31,9 @@ public class Rating {
     private long id;
 
     @NonNull
-    private long userID;
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private User user;
 
     @JsonIgnore
     @NonNull

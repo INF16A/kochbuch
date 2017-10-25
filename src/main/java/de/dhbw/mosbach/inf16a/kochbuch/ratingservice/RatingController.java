@@ -2,6 +2,7 @@ package de.dhbw.mosbach.inf16a.kochbuch.ratingservice;
 
 //import de.dhbw.mosbach.inf16a.kochbuch.ratingservice.Rating;
 //import de.dhbw.mosbach.inf16a.kochbuch.ratingservice.RatingRepository;
+import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.Recipe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,5 +46,13 @@ public class RatingController {
         //int i = -1;
         //return ratingRepository.countByRecipeIdByValue(recipeID, i);
         return -1;
+    }
+
+    @GetMapping(value="/test/{value}")
+    public long myCount(@PathVariable(value = "value") short v)
+    {
+        Recipe r = new Recipe();
+        r.setId(777);
+        return ratingRepository.myCount(r,v);
     }
 }
