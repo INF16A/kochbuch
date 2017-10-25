@@ -48,11 +48,9 @@ public class RatingController {
         return -1;
     }
 
-    @GetMapping(value="/test/{value}")
-    public long myCount(@PathVariable(value = "value") short v)
+    @GetMapping(value="{recipeId}/test/{value}")
+    public long myCount(@PathVariable(value ="recipeId") long r,@PathVariable(value = "value") short v)
     {
-        Recipe r = new Recipe();
-        r.setId(777);
         return ratingRepository.myCount(r,v);
     }
 }

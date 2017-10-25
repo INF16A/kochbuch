@@ -15,8 +15,8 @@ public interface RatingRepository extends CrudRepository<Rating, Long> {
 
     List<Rating> findByRecipeId(long recipeID);
 
-    @Query("SELECT COUNT(r) FROM Rating r WHERE r.recipe=?1 AND r.value=?2")
-    Long myCount(Recipe r, short s);
+    @Query("SELECT COUNT(r) FROM Rating r WHERE r.recipe.id=?1 AND r.value=?2")
+    Long myCount(long rid, short s);
 
     //long countByRecipeIdByValue(long recipeID, int value);
 
