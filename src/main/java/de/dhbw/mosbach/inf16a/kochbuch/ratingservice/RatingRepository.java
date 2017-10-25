@@ -13,10 +13,11 @@ import java.util.List;
  */
 public interface RatingRepository extends CrudRepository<Rating, Long> {
 
+    //Irrelevant
     List<Rating> findByRecipeId(long recipeID);
 
     @Query("SELECT COUNT(r) FROM Rating r WHERE r.recipe.id=?1 AND r.value=?2")
-    Long myCount(long rid, short s);
+    Long myCount(long recipeid, short ratingvalue);
 
     //long countByRecipeIdByValue(long recipeID, int value);
 
