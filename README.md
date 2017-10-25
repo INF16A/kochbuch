@@ -19,8 +19,8 @@
   - Konsole: `mvn clean install`
   - IntelliJ: Maven Projects -> Lifecycle -> clean, install -> Run Maven Build (grüner Pfeil im Maven Docking Window)
 4. Jar ausführen `java -jar target/kochbuch-1.0.0.jar --mysql-host=192.168.99.100`
-5.-7. Zurücklehnen
-8. Bei Fragen an Patrick Hahn wenden, er hat die Ahnung.  
+5. Zurücklehnen
+6. Bei Fragen an Patrick Hahn wenden, er hat die Ahnung.  
 
 # Kochbuch Webservice
 Der Kochbuch Webservice ist ein Projekt des Kurses INF16A, das im Kurs Web Engineering II durchgeführt wird.
