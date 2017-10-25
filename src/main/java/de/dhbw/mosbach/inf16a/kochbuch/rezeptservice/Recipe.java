@@ -30,6 +30,7 @@ import lombok.RequiredArgsConstructor;
  * @author Thomas Hörner
  * @author André Berberich
  * @author Robert Zebec
+ * @author Alexander Krieg
  *
  */
 @Data
@@ -45,6 +46,9 @@ public class Recipe {
 
 	@NonNull
 	private String name;
+
+	@NonNull
+	private Integer effort;
 
 	@NonNull
 	private String description;
@@ -67,7 +71,7 @@ public class Recipe {
 
 	@NonNull
 	@OneToMany
-	@JoinColumn(name = "picId")
+	@JoinColumn(name = "recipeId")
 	private List<Picture> pics;
 
 	@NonNull

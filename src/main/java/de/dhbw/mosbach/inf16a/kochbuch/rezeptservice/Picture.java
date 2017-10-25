@@ -16,6 +16,8 @@ import lombok.RequiredArgsConstructor;
  * @author Patrick Eichert
  * @author Theresa Reus
  * @author Thomas Hörner
+ * @author Daniel Abel
+ * @author Alexander Krieg
  *
  */
 @Data
@@ -26,10 +28,11 @@ public class Picture {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "picId")
+	@Column(name = "picId", nullable = false)
 	private long id;
 
 	@NonNull
+	@Column(columnDefinition = "longtext")
 	private String picData;
 
 }

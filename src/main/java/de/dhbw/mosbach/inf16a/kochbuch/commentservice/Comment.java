@@ -37,6 +37,7 @@ public class Comment {
 	private long id;
 
 	@NonNull
+	@Column(columnDefinition = "longtext")
 	private String text;
 
 	@NonNull
