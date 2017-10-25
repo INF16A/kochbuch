@@ -2,6 +2,7 @@ package de.dhbw.mosbach.inf16a.kochbuch.rezeptservice;
 
 import de.dhbw.mosbach.inf16a.kochbuch.commentservice.Comment;
 import de.dhbw.mosbach.inf16a.kochbuch.ingredientservice.RecipeIngredient;
+import de.dhbw.mosbach.inf16a.kochbuch.ratingservice.Rating;
 import de.dhbw.mosbach.inf16a.kochbuch.tags.Tag;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -69,6 +70,10 @@ public class Recipe {
 
 	@OneToMany(mappedBy = "recipe")
 	private List<RecipeIngredient> recipeIngredients;
+
+	@NonNull
+	@OneToMany
+	private List<Rating> ratings;
 
 	public Long getId() {
 		return this.id;
