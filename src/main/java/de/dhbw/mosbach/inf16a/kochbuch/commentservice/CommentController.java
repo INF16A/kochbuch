@@ -39,16 +39,16 @@ public class CommentController
 
 	@CrossOrigin
 	@PostMapping(value = "/comment/delete")
-	public Comment deleteComment(@RequestBody CommentRequest request)
+	public void deleteComment(@RequestBody long commentID)
 	// public Comment addComment(@RequestBody Comment theNewComment)
 	{
-		Recipe re = recipeRepository.findOne(request.getRecipeId());
-		User usr = userRepository.findOne(request.getUserId());
-		Comment c = new Comment(request.getText(), request.getCreationDate(), usr, re);
-		commentRepository.delete(c);
+		// Recipe re = recipeRepository.findOne(request.getRecipeId());
+		// User usr = userRepository.findOne(request.getUserId());
+		// Comment c = new Comment(request.getText(), request.getCreationDate(), usr, re);
+		commentRepository.delete(commentID);
 		// return this.commentRepository.save(new Comment(request.getText(), request.getCreationDate(), usr, re));
 		// return commentRepository.findAllByOrderByCreationDateDesc();
-		return c;
+		// return c;
 	}
 
 	@CrossOrigin
