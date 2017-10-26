@@ -38,8 +38,7 @@ public class RecipeIngredient {
 	@ManyToOne
 	@JoinColumn(name = "recipeId")
 	private Recipe recipe;
-
-	@JsonIgnore
+	
 	@NonNull
 	@Id
 	@ManyToOne
