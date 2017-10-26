@@ -1,10 +1,6 @@
 package de.dhbw.mosbach.inf16a.kochbuch.ratingservice;
 
-import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.Recipe;
-import org.springframework.data.jpa.repository.Query;
-
 import org.springframework.data.repository.CrudRepository;
-import java.util.List;
 
 /**
  * @author Tim Kühnlein
@@ -13,15 +9,14 @@ import java.util.List;
  */
 public interface RatingRepository extends CrudRepository<Rating, Long> {
 
-    //Irrelevant
-    List<Rating> findByRecipeId(long recipeID);
+    Rating findByRecipeIdAndUserId(long recipeID,long userID);
 
-    @Query("SELECT COUNT(r) FROM Rating r WHERE r.recipe.id=?1 AND r.value=?2")
-    Long myCount(long recipeid, short ratingvalue);
+    Long countByRecipeIdAndValue(long recipeid,short ratingvalue);
 
-    //long countByRecipeIdByValue(long recipeID, int value);
-
-    //List<Rating> findAllByRecipeIDByValue(long recipeID, int value);
-    //long count(findByRecipeIDWhereValue=1);
-    //int sumfindByRecipeIDvalue();
+    /**
+     * geht auch ohne query, siehe oben...
+     *
+     * @Query("SELECT COUNT(r) FROM Rating r WHERE r.recipe.id=?1 AND r.value=?2")
+     * Long myCount(long recipeid, short ratingvalue);
+     */
 }

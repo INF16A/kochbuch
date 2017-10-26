@@ -27,13 +27,13 @@ public class RatingController {
     @Autowired
     private RatingRepository ratingRepository;
 
-    /**
-     * Irrelevant
-     */
-    @GetMapping(value = "/rating/{recipeID}")
-    public List<Rating> ratingForRecipe(@PathVariable(value = "recipeID") long recipeID)
+
+    @GetMapping(value = "/rating/{recipeID}/{userID}")
+    public short ratingForRecipe(@PathVariable(value = "recipeID") long recipeID,@PathVariable(value = "userID") long userID)
     {
-        return ratingRepository.findByRecipeId(recipeID);
+        if(ratingRepository.findByRecipeIdAndUserId(recipeID,userID) instanceof Rating)
+            return ratingRepository.findByRecipeIdAndUserId(recipeID,userID).getValue();
+        else return 0;
     }
 
     @PostMapping(value = "/rating")
@@ -47,20 +47,12 @@ public class RatingController {
     @GetMapping(value="/rating/{recipeID}/count/up")
     public long countUpVote(@PathVariable(value = "recipeID") long recipeID)
     {
-        return ratingRepository.myCount(recipeID,(short)1);
+        return ratingRepository.countByRecipeIdAndValue(recipeID,(short)1);
     }
 
     @GetMapping(value="/rating/{recipeID}/count/down")
     public long countDownVote(@PathVariable(value = "recipeID") long recipeID)
     {
-        return ratingRepository.myCount(recipeID,(short)-1);
+        return ratingRepository.countByRecipeIdAndValue(recipeID,(short)-1);
     }
-
-    /*
-    @GetMapping(value="{recipeId}/test/{value}")
-    public long myCount(@PathVariable(value ="recipeId") long r,@PathVariable(value = "value") short v)
-    {
-        return ratingRepository.myCount(r,v);
-    }
-    */
 }
