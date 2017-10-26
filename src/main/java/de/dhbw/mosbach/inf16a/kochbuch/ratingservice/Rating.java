@@ -41,6 +41,13 @@ public class Rating {
     @JoinColumn(name = "rezeptId")
     private Recipe recipe;
 
-    @NonNull
-    private short value;    //-1,0,1
+    private short value;    //-1,Null,1
+
+    //sonst läuft maven nicht durch s. RatingController l 44
+    public Rating(User u, Recipe r, short value)
+    {
+        this.user = u;
+        this.recipe = r;
+        this.value = value;
+    }
 }
