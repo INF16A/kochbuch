@@ -36,14 +36,22 @@ public class CommentController
 	{
 		return commentRepository.findAllByRecipeOrderByCreationDateDesc(recipeRepository.findOne(recipeID));
 	}
-	// @GetMapping(value = "/comments4u/{userID}")
-	// public List<Comment> commentsForUser(@PathVariable(value = "userID") long userID)
-	// {
-	// 	return commentRepository.findAllByRecipe(recipeRepository.findOne(userID));
-	// 	// Recipe r = recipeRepository.findOne(userID);
-	// 	// return r.getComments();
-	// }
 
+	@CrossOrigin
+	@PostMapping(value = "/comment/delete")
+	public Comment deleteComment(@RequestBody CommentRequest request)
+	// public Comment addComment(@RequestBody Comment theNewComment)
+	{
+		Recipe re = recipeRepository.findOne(request.getRecipeId());
+		User usr = userRepository.findOne(request.getUserId());
+		Comment c = new Comment(request.getText(), request.getCreationDate(), usr, re);
+		commentRepository.delete(c);
+		// return this.commentRepository.save(new Comment(request.getText(), request.getCreationDate(), usr, re));
+		// return commentRepository.findAllByOrderByCreationDateDesc();
+		return c;
+	}
+
+	@CrossOrigin
 	@PostMapping(value = "/comment")
 	public Comment addComment(@RequestBody CommentRequest request)
 	// public Comment addComment(@RequestBody Comment theNewComment)
