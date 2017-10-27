@@ -19,4 +19,4 @@ INSERT INTO `preperation_step` (`pre_step_id`, `description`, `effort`, `step_co
 
 INSERT INTO `comment` (`comment_id`, `creation_date`, `text`, `user_id`, `rezept_id`) VALUES (NULL, '2017-10-22 00:00:00', 'Super leckeres Gericht.', '1', '1');
 
-INSERT INTO `rating` (`rating_id`, `value`, `rezept_id`, `user_id`) VALUES ('222', '1', '1', '2'), ('223', '1', '1', '2'), ('224', '-1', '1', '2')
+INSERT INTO `rating` (`rating_id`, `value`, `rezept_id`, `user_id`) VALUES ('222', '1', '1', '2'), ('223', '1', '1', '2'), ('224', '-1', '1', '2');
