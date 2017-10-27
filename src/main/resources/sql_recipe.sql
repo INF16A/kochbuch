@@ -1,4 +1,4 @@
-/* @author Theresa Reus
+﻿/* @author Theresa Reus
  @author André Berberich*/
 
 INSERT INTO `user` (`user_id`, `creation_date`, `deletion_date`, `email`, `pw_hash`) VALUES (NULL, '2017-10-01 00:00:00', NULL, 'test@test.de', 'sfhjdsagfkaeshjdkfaksdfkjadshfkjdhaks'), (NULL, '2017-10-15 00:00:00', NULL, 'test2@test.de', 'dfndakjsfhadsjfncalkhesofed');
@@ -18,3 +18,5 @@ INSERT INTO `recipe_tags` (`rezept_id`, `tag_id`) VALUES ('1', '3'), ('1', '1');
 INSERT INTO `preperation_step` (`pre_step_id`, `description`, `effort`, `step_count`, `pic_id`, `rezept_id`) VALUES (NULL, 'Kartoffeln schälen und kochen.', '30', '1', NULL, '1'), (NULL, 'Käse über die Kartoffeln streuen.', '1', '2', NULL, '1');
 
 INSERT INTO `comment` (`comment_id`, `creation_date`, `text`, `user_id`, `rezept_id`) VALUES (NULL, '2017-10-22 00:00:00', 'Super leckeres Gericht.', '1', '1');
+
+INSERT INTO `rating` (`rating_id`, `value`, `rezept_id`, `user_id`) VALUES ('222', '1', '1', '2'), ('223', '1', '1', '2'), ('224', '-1', '1', '2');
