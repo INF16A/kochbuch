@@ -14,19 +14,22 @@ public class IngredientController {
     @Autowired
     private IngredientRepository ingredientRepository;
 
+    @CrossOrigin
     @GetMapping(value = "/ingredients")
     public List<Ingredient> ingredients()
     {
         return ingredientRepository.findAll();
     }
 
+    @CrossOrigin
     @GetMapping(value="/ingredient/{id}")
     public Ingredient getIngredientById(@PathVariable(value = "id")Long id) {
         return ingredientRepository.findFirstById(id);
     }
 
+    @CrossOrigin
     @PostMapping(value = "/ingredient")
-    public Ingredient addIngredient(@ModelAttribute Ingredient newIngredient)
+    public Ingredient addIngredient(@RequestBody Ingredient newIngredient)
     {
         return this.ingredientRepository.save(newIngredient);
     }
