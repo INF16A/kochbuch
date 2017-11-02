@@ -89,9 +89,4 @@ public class Recipe {
 	@NonNull
 	@OneToMany(mappedBy = "recipe")
 	private List<Rating> ratings;
-
-	public Long getId() {
-		return this.id;
-	}
-
 }
