@@ -1,5 +1,7 @@
 /* @author Theresa Reus
- @author André Berberich*/
+ @author André Berberich
+ @author Patrick Eichert
+ */
 
 INSERT INTO `user` (`user_id`, `creation_date`, `deletion_date`, `email`, `pw_hash`) VALUES (NULL, '2017-10-01 00:00:00', NULL, 'test@test.de', 'sfhjdsagfkaeshjdkfaksdfkjadshfkjdhaks'), (NULL, '2017-10-15 00:00:00', NULL, 'test2@test.de', 'dfndakjsfhadsjfncalkhesofed');
 
