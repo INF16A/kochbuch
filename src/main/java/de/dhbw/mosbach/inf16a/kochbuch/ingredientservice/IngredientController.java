@@ -3,10 +3,12 @@ package de.dhbw.mosbach.inf16a.kochbuch.ingredientservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author André Berberich
+ * @author Thomas Hörner
  */
 @RestController
 public class IngredientController {
@@ -16,21 +18,37 @@ public class IngredientController {
 
     @CrossOrigin
     @GetMapping(value = "/ingredients")
-    public List<Ingredient> ingredients()
-    {
+    public List<Ingredient> ingredients() {
         return ingredientRepository.findAll();
     }
 
     @CrossOrigin
-    @GetMapping(value="/ingredient/{id}")
-    public Ingredient getIngredientById(@PathVariable(value = "id")Long id) {
+    @GetMapping(value = "/ingredient/{id}")
+    public Ingredient getIngredientById(@PathVariable(value = "id") Long id) {
         return ingredientRepository.findFirstById(id);
     }
 
     @CrossOrigin
     @PostMapping(value = "/ingredient")
-    public Ingredient addIngredient(@RequestBody Ingredient newIngredient)
-    {
+    public Ingredient addIngredient(@RequestBody Ingredient newIngredient) {
         return this.ingredientRepository.save(newIngredient);
     }
+
+    /**
+     * @author Thomas Hörner
+     */
+    @CrossOrigin
+    @GetMapping(value = "/ingredient/search")
+    public List<IngredientLight> findIngredient(@RequestParam("q") String name) {
+        if (name == null || name.isEmpty()) {
+            return new ArrayList<IngredientLight>();
+        }
+        //Daten die zurückgegeben werden reduzieren
+        List<IngredientLight> tempIngr = new ArrayList<>();
+        for (Ingredient ingredient : ingredientRepository.findByNameContainingIgnoreCase(name)) {
+            tempIngr.add(new IngredientLight(ingredient.getName(), "testunit", ingredient.getUnit()));
+        }
+        return tempIngr;
+    }
+
 }
