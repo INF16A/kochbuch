@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,6 +24,7 @@ public class TagController {
 	@Autowired
 	private TagRepository tagRepository;
 
+	@CrossOrigin
 	@GetMapping(value = "/tag")
 	public List<Tag> searchTagByName(@RequestParam("search") String name) {
 		if (name == null || name.length() == 0) {
