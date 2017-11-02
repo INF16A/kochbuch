@@ -48,8 +48,4 @@ public class Ingredient {
 
 	@NonNull
 	private Double costPerUnit;
-
-	public Long getId() {
-		return this.id;
-	}
 }
