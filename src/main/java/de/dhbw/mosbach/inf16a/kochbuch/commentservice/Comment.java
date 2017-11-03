@@ -1,20 +1,29 @@
 package de.dhbw.mosbach.inf16a.kochbuch.commentservice;
 
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.Recipe;
+import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.RezeptUser;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
-import java.util.Date;
-
-import javax.persistence.*;
-
 /**
  * @author Alexander Krieg
  * @author Patrick Eichert
  * @author Theresa Reus
+ * @author Thomas Hörner
  */
 
 @Data
@@ -28,17 +37,28 @@ public class Comment {
 	private long id;
 
 	@NonNull
+	@Column(columnDefinition = "longtext")
 	private String text;
 
 	@NonNull
 	private Date creationDate;
 
+	// @JsonIgnore
 	@NonNull
-	private long userID;
+	@ManyToOne
+	@JoinColumn(name = "userId")
+	private RezeptUser user;
 
 	@JsonIgnore
 	@NonNull
 	@ManyToOne
-	@JoinColumn(name="rezeptId")
+	@JoinColumn(name = "rezeptId")
 	private Recipe recipe;
+
+	// public Comment(String text, Date creationDate, User user, Recipe recipe){
+	// 	this.text = text;
+	// 	this.creationDate = creationDate;
+	// 	this.user = user;
+	// 	this.recipe = recipe;
+	// }
 }
