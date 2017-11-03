@@ -1,7 +1,7 @@
 package de.dhbw.mosbach.inf16a.kochbuch.userservice;
 
 import org.springframework.data.repository.CrudRepository;
-import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.User;
+import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.RezeptUser;
 
 
 /**
@@ -9,6 +9,6 @@ import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.User;
  * 
  */
 
-public interface UserRepository extends CrudRepository<User, Long>
+public interface RezeptUserRepository extends CrudRepository<RezeptUser, Long>
 {
 }

@@ -2,7 +2,7 @@ package de.dhbw.mosbach.inf16a.kochbuch.ratingservice;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.Recipe;
-import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.User;
+import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.RezeptUser;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -33,7 +33,7 @@ public class Rating {
     @NonNull
     @ManyToOne
     @JoinColumn(name = "userId")
-    private User user;
+    private RezeptUser user;
 
     @JsonIgnore
     @NonNull
@@ -44,7 +44,7 @@ public class Rating {
     private short value;    //-1,Null,1
 
     //sonst läuft maven nicht durch s. RatingController l 44
-    public Rating(User u, Recipe r, short value)
+    public Rating(RezeptUser u, Recipe r, short value)
     {
         this.user = u;
         this.recipe = r;

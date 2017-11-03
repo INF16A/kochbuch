@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.Recipe;
-import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.User;
+import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.RezeptUser;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -47,7 +47,7 @@ public class Comment {
 	@NonNull
 	@ManyToOne
 	@JoinColumn(name = "userId")
-	private User user;
+	private RezeptUser user;
 
 	@JsonIgnore
 	@NonNull
