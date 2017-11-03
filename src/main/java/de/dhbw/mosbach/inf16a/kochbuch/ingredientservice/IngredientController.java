@@ -1,7 +1,13 @@
 package de.dhbw.mosbach.inf16a.kochbuch.ingredientservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,12 +49,12 @@ public class IngredientController {
         if (name == null || name.isEmpty()) {
             return new ArrayList<IngredientLight>();
         }
-        //Daten die zurückgegeben werden reduzieren
+        // Daten die zurückgegeben werden reduzieren
         List<IngredientLight> tempIngr = new ArrayList<>();
         for (Ingredient ingredient : ingredientRepository.findByNameContainingIgnoreCase(name)) {
-            tempIngr.add(new IngredientLight(ingredient.getName(), "testunit", ingredient.getUnit()));
+            tempIngr.add(
+                    new IngredientLight(ingredient.getId(), ingredient.getUnit(), "testunit", ingredient.getName()));
         }
         return tempIngr;
     }
-
 }

@@ -16,12 +16,15 @@ import lombok.RequiredArgsConstructor;
 public class IngredientLight {
 
 	@NonNull
-	private String name;
+	private Long unitId;
+
+	@NonNull
+	private Integer ingredientId;
+
+	@NonNull
+	private String ingredientName;
 
 	@NonNull
 	private String unitName;
-	
-	@NonNull
-	private Integer unitId;
-	
+
 }
