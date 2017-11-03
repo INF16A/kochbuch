@@ -3,7 +3,7 @@ package de.dhbw.mosbach.inf16a.kochbuch.commentservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.*;
-import de.dhbw.mosbach.inf16a.kochbuch.userservice.UserRepository;
+import de.dhbw.mosbach.inf16a.kochbuch.userservice.RezeptUserRepository;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class CommentController
 	private RecipeRepository recipeRepository;
 
 	@Autowired
-	private UserRepository userRepository;
+	private RezeptUserRepository userRepository;
 
 
 	@GetMapping(value = "/comments")
@@ -57,7 +57,7 @@ public class CommentController
 	// public Comment addComment(@RequestBody Comment theNewComment)
 	{
 		Recipe re = recipeRepository.findOne(request.getRecipeId());
-		User usr = userRepository.findOne(request.getUserId());
+		RezeptUser usr = userRepository.findOne(request.getUserId());
 		return this.commentRepository.save(new Comment(request.getText(), request.getCreationDate(), usr, re));
 		
 		// return commentRepository.findAllByOrderByCreationDateDesc();
