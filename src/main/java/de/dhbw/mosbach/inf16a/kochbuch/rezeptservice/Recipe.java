@@ -2,6 +2,7 @@ package de.dhbw.mosbach.inf16a.kochbuch.rezeptservice;
 
 import de.dhbw.mosbach.inf16a.kochbuch.commentservice.Comment;
 import de.dhbw.mosbach.inf16a.kochbuch.ingredientservice.RecipeIngredient;
+import de.dhbw.mosbach.inf16a.kochbuch.ratingservice.Rating;
 import de.dhbw.mosbach.inf16a.kochbuch.tags.Tag;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,9 @@ import java.util.List;
  * @author Patrick Eichert
  * @author Theresa Reus
  * @author Thomas Hörner
+ * @author André Berberich
+ * @author Robert Zebec
+ * @author Alexander Krieg
  *
  */
 @Data
@@ -32,6 +36,9 @@ public class Recipe {
 
 	@NonNull
 	private String name;
+
+	@NonNull
+	private Integer effort;
 
 	@NonNull
 	private String description;
@@ -54,7 +61,7 @@ public class Recipe {
 
 	@NonNull
 	@OneToMany
-	@JoinColumn(name = "picId")
+	@JoinColumn(name = "recipeId")
 	private List<Picture> pics;
 
 	@NonNull
@@ -68,4 +75,7 @@ public class Recipe {
 	@OneToMany(mappedBy = "recipe")
 	private List<RecipeIngredient> recipeIngredients;
 
+	@NonNull
+	@OneToMany(mappedBy = "recipe")
+	private List<Rating> ratings;
 }

@@ -2,6 +2,8 @@ package de.dhbw.mosbach.inf16a.kochbuch.commentservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.*;
+import de.dhbw.mosbach.inf16a.kochbuch.userservice.UserRepository;
 
 import java.util.List;
 
@@ -16,6 +18,12 @@ public class CommentController
 	@Autowired
 	private CommentRepository commentRepository;
 
+	@Autowired
+	private RecipeRepository recipeRepository;
+
+	@Autowired
+	private UserRepository userRepository;
+
 
 	@GetMapping(value = "/comments")
 	public List<Comment> comments()
@@ -23,16 +31,35 @@ public class CommentController
 		return commentRepository.findAllByOrderByCreationDateDesc();
 	}
 
-//	@GetMapping(value = "/comments/{recipeID}")
-//	public List<Comment> commentsForRecipe(@PathVariable(value = "recipeID") long recipeID)
-//	{
-//		return commentRepository.findByRecipeIDOrderByCreationDateDesc(recipeID);
-//	}
-
-	@PostMapping(value = "/comment")
-	public Comment addComment(@RequestBody Comment theNewComment)
+	@GetMapping(value = "/comments/{recipeID}")
+	public List<Comment> commentsForRecipe(@PathVariable(value = "recipeID") long recipeID)
 	{
-		return this.commentRepository.save(theNewComment);
+		return commentRepository.findAllByRecipeOrderByCreationDateDesc(recipeRepository.findOne(recipeID));
+	}
+
+	@CrossOrigin
+	@PostMapping(value = "/comment/delete")
+	public void deleteComment(@RequestBody long commentID)
+	// public Comment addComment(@RequestBody Comment theNewComment)
+	{
+		// Recipe re = recipeRepository.findOne(request.getRecipeId());
+		// User usr = userRepository.findOne(request.getUserId());
+		// Comment c = new Comment(request.getText(), request.getCreationDate(), usr, re);
+		commentRepository.delete(commentID);
+		// return this.commentRepository.save(new Comment(request.getText(), request.getCreationDate(), usr, re));
+		// return commentRepository.findAllByOrderByCreationDateDesc();
+		// return c;
+	}
+
+	@CrossOrigin
+	@PostMapping(value = "/comment")
+	public Comment addComment(@RequestBody CommentRequest request)
+	// public Comment addComment(@RequestBody Comment theNewComment)
+	{
+		Recipe re = recipeRepository.findOne(request.getRecipeId());
+		User usr = userRepository.findOne(request.getUserId());
+		return this.commentRepository.save(new Comment(request.getText(), request.getCreationDate(), usr, re));
+		
 		// return commentRepository.findAllByOrderByCreationDateDesc();
 	}
 
