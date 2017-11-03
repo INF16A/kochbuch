@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author Theresa Reus
+ * @author Endrit Çallaki
  */
 
 @RestController
@@ -27,4 +28,10 @@ public class RecipeController {
 		return recipeRepository.findOne(id);
 	}
 
+	@GetMapping(value = "/recipe/{tag}")
+	public List<Recipe> getRecipeByTag(@PathVariable(value="tag") String tag) {	return recipeRepository.findRecipeByTagsContains(tag);
+	}
+
+	@GetMapping(value = "/recipe/{keyword}")
+	public List<Recipe> getRecipeByKeyword(@PathVariable(value="keyword") String keyword) { return recipeRepository.findRecipeByNameContains(keyword); }
 }
