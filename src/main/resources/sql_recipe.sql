@@ -4,13 +4,13 @@
  @author Alexander Krieg
  */
 
-INSERT INTO `user` (`user_id`, `creation_date`, `deletion_date`, `email`, `pw_hash`) VALUES (NULL, '2017-10-01 00:00:00', NULL, 'test@test.de', 'sfhjdsagfkaeshjdkfaksdfkjadshfkjdhaks'), (NULL, '2017-10-15 00:00:00', NULL, 'test2@test.de', 'dfndakjsfhadsjfncalkhesofed');
+INSERT INTO `rezept_user` (`user_id`, `creation_date`, `deletion_date`, `email`, `pw_hash`) VALUES (NULL, '2017-10-01 00:00:00', NULL, 'test@test.de', 'sfhjdsagfkaeshjdkfaksdfkjadshfkjdhaks'), (NULL, '2017-10-15 00:00:00', NULL, 'test2@test.de', 'dfndakjsfhadsjfncalkhesofed');
 
 INSERT INTO `tag` (`tag_id`, `name`) VALUES (NULL, 'bio'), (NULL, 'vegan');
 INSERT INTO `tag` (`tag_id`, `name`) VALUES (NULL, 'einfach'), (NULL, 'aufwändig');
 
-INSERT INTO `ingredient` (`id`, `cost_per_unit`, `k_cal_per_unit`, `name`, `unit`) VALUES (NULL, '0.0007996', '0.77', 'Kartoffel', '2');
-INSERT INTO `ingredient` (`id`, `cost_per_unit`, `k_cal_per_unit`, `name`, `unit`) VALUES (NULL, '0.01125', '3.57', 'Edamer', '2');
+INSERT INTO `ingredient` (`id`, `cost_per_unit`, `kcal_per_unit`, `name`, `unit`) VALUES (NULL, '0.0007996', '0.77', 'Kartoffel', '2');
+INSERT INTO `ingredient` (`id`, `cost_per_unit`, `kcal_per_unit`, `name`, `unit`) VALUES (NULL, '0.01125', '3.57', 'Edamer', '2');
 
 INSERT INTO `recipe` (`rezept_id`, `create_date`, `description`, `difficulty`, `name`, `user_id`, `effort`) VALUES (NULL, '2017-10-08 00:00:00', 'Leckere Kartoffeln mit Käse - das beste was man mit Kartoffeln machen kann', '1', 'Kartoffeln mit Käse', '1', '31') ;
 
