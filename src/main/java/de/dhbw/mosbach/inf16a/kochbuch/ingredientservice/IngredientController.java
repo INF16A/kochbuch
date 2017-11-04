@@ -1,5 +1,6 @@
 package de.dhbw.mosbach.inf16a.kochbuch.ingredientservice;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,8 +37,11 @@ public class IngredientController {
 
     @CrossOrigin
     @PostMapping(value = "/ingredient")
-    public Ingredient addIngredient(@RequestBody Ingredient newIngredient) {
-        return this.ingredientRepository.save(newIngredient);
+    public IngredientLight addIngredient(@RequestBody Ingredient newIngredient) {
+
+        Ingredient ingredient = ingredientRepository.save(newIngredient);
+
+        return new IngredientLight(ingredient.getId(), Long.valueOf(ingredient.getUnit()), ingredient.getName());
     }
 
     /**
@@ -46,15 +50,13 @@ public class IngredientController {
     @CrossOrigin
     @GetMapping(value = "/ingredient/search")
     public List<IngredientLight> findIngredient(@RequestParam("q") String name) {
-        if (name == null || name.isEmpty()) {
-            return new ArrayList<IngredientLight>();
-        }
-        // Daten die zurückgegeben werden reduzieren
+        if (name == null || name.isEmpty())
+            return new ArrayList<>();
+
+        // unnötige Daten rauswerfen
         List<IngredientLight> tempIngr = new ArrayList<>();
-        for (Ingredient ingredient : ingredientRepository.findByNameContainingIgnoreCase(name)) {
-            tempIngr.add(
-                    new IngredientLight(ingredient.getId(), ingredient.getUnit(), "testunit", ingredient.getName()));
-        }
+        for (Ingredient ingredient : ingredientRepository.findByNameContainingIgnoreCase(name))
+            tempIngr.add(new IngredientLight(ingredient.getId(), Long.valueOf(ingredient.getUnit()), ingredient.getName()));
         return tempIngr;
     }
 }
