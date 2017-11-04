@@ -19,12 +19,9 @@ public class IngredientLight {
 	private Long unitId;
 
 	@NonNull
-	private Integer ingredientId;
+	private Long ingredientId;
 
 	@NonNull
 	private String ingredientName;
-
-	@NonNull
-	private String unitName;
 
 }
