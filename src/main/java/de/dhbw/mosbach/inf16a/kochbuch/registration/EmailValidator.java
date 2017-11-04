@@ -6,7 +6,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by Annika on 04.11.2017.
+ * @author Annika Schatz
+ * @author Tobias Bloch
+ * @author Irina Eurich
  */
 public class EmailValidator
         implements ConstraintValidator<EmailValidation, String> {

@@ -1,11 +1,14 @@
 package de.dhbw.mosbach.inf16a.kochbuch.registration;
 
+import de.dhbw.mosbach.inf16a.kochbuch.authentication.User;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 
 /**
- * Created by Annika on 04.11.2017.
+ * @author Annika Schatz
+ * @author Tobias Bloch
+ * @author Irina Eurich
  */
 public interface IRegistartionService {
-    SecurityProperties.User registerNewUserAccount(UserDTO accountDto)
+    User registerNewUserAccount(UserDTO accountDto)
         throws EmailExistsException;
 }

@@ -10,7 +10,9 @@ import java.lang.annotation.Target;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * Created by Annika on 04.11.2017.
+ * @author Annika Schatz
+ * @author Tobias Bloch
+ * @author Irina Eurich
  */
 
 @Target({ElementType.TYPE, ElementType.ANNOTATION_TYPE})

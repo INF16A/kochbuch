@@ -5,7 +5,9 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 /**
- * Created by Annika on 04.11.2017.
+ * @author Annika Schatz
+ * @author Tobias Bloch
+ * @author Irina Eurich
  */
 @MatchingPassword
 public class UserDTO {

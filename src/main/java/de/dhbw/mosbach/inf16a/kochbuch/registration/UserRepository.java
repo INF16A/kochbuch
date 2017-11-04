@@ -8,16 +8,16 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 /**
- * @author Patrick Hahn
- * @author Armin Beck
- * @author Leandro Späth
+ * @author Annika Schatz
+ * @author Tobias Bloch
+ * @author Irina Eurich
  */
 
 @Service
-public interface UserRepository extends JpaRepository<User, Long>
-{
+public interface UserRepository extends JpaRepository<User, Long> {
+	User findByEmail(String email);
 
-
-	SecurityProperties.User findByEmail(String email);
+	@Override
+	void delete(User user);
 
 }

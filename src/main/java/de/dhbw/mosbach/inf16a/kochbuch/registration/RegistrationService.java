@@ -1,14 +1,18 @@
 package de.dhbw.mosbach.inf16a.kochbuch.registration;
 
+import de.dhbw.mosbach.inf16a.kochbuch.authentication.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
+import java.util.Optional;
 
 /**
- * Created by Annika on 04.11.2017.
+ * @author Annika Schatz
+ * @author Tobias Bloch
+ * @author Irina Eurich
  */
 @Service
 public class RegistrationService implements IRegistartionService {
@@ -17,7 +21,7 @@ public class RegistrationService implements IRegistartionService {
 
     @Transactional
     @Override
-    public SecurityProperties.User registerNewUserAccount(UserDTO accountDto)
+    public User registerNewUserAccount(UserDTO accountDto)
             throws EmailExistsException {
 
         if (emailExist(accountDto.getEmail())) {
@@ -25,15 +29,14 @@ public class RegistrationService implements IRegistartionService {
                     "There is an account with that email adress: "
                             +  accountDto.getEmail());
         }
-        SecurityProperties.User user = new SecurityProperties.User();
-        user.setName(accountDto.getUserName());
+        User user = new User();
+        user.setUsername(accountDto.getUserName());
         user.setPassword(accountDto.getPassword());
         user.setEmail(accountDto.getEmail());
-        user.setRole(Arrays.asList("ROLE_USER"));
         return repository.save(user);
     }
     private boolean emailExist(String email) {
-        SecurityProperties.User user = repository.findByEmail(email);
+        User user = repository.findByEmail(email);
         if (user != null) {
             return true;
         }

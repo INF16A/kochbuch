@@ -7,6 +7,7 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * @author Patrick Hahn
@@ -28,7 +29,22 @@ public class User
 	@Column(nullable = false, unique = true)
 	@NonNull
 	private String username;
+	
+	private String email;
 
 	@JsonIgnore
 	private String password;
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
 }

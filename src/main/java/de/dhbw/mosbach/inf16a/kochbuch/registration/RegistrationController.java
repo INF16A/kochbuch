@@ -1,7 +1,9 @@
 package de.dhbw.mosbach.inf16a.kochbuch.registration;
 
+import de.dhbw.mosbach.inf16a.kochbuch.authentication.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
@@ -14,8 +16,11 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.validation.Valid;
 
 /**
- * Created by Annika on 04.11.2017.
+ * @author Annika Schatz
+ * @author Tobias Bloch
+ * @author Irina Eurich
  */
+@Controller
 public class RegistrationController {
 
     @Autowired
@@ -30,7 +35,7 @@ public class RegistrationController {
 
     @PostMapping(value ="/user/registration")
     public ModelAndView registerUserAccount (@ModelAttribute("user")@Valid UserDTO accountDto, BindingResult result, WebRequest request, Errors errors){
-        SecurityProperties.User registered = new SecurityProperties.User();
+        User registered = new User();
         if (!result.hasErrors()) {
             registered = createUserAccount(accountDto, result);
         }
@@ -44,8 +49,8 @@ public class RegistrationController {
             return new ModelAndView("successRegister", "user", accountDto);
         }
     }
-    private SecurityProperties.User createUserAccount(UserDTO accountDto, BindingResult result) {
-        SecurityProperties.User registered = null;
+    private User createUserAccount(UserDTO accountDto, BindingResult result) {
+        User registered = null;
         try {
             registered = service.registerNewUserAccount(accountDto);
         } catch (EmailExistsException e) {
