@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import lombok.extern.log4j.Log4j;
-
 /**
  * 
  * @author Thomas Hörner
@@ -25,14 +23,14 @@ public class TagController {
 	private TagRepository tagRepository;
 
 	@CrossOrigin
-	@GetMapping(value = "/tag")
-	public List<Tag> searchTagByName(@RequestParam("search") String name) {
-		if (name == null || name.length() == 0) {
+	@GetMapping(value = "/tag/search")
+	public List<Tag> searchTagByName(@RequestParam("q") String name) {
+		if (name == null || name.length() == 0) 
 			return new ArrayList<Tag>();
-		}
 		return tagRepository.findByNameContainingIgnoreCase(name);
 	}
 
+	@CrossOrigin
 	@GetMapping(value = "/tag/all")
 	public List<Tag> getAll() {
 		return tagRepository.findAll();
@@ -49,6 +47,7 @@ public class TagController {
 	 * @return Erstellter Tag
 	 * @author Thomas Hörner
 	 */
+	@CrossOrigin
 	@PostMapping(value = "tag/create")
 	public Tag createTag(@RequestBody String name) {
 		if (name == null || name.length() == 0)
