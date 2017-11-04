@@ -48,13 +48,4 @@ public class Ingredient {
 
 	@NonNull
 	private Double costPerUnit;
-
-	@NonNull
-	@OneToOne
-	@JoinColumn(name = "picId")
-	private Picture pic;
-
-	public Long getId() {
-		return this.id;
-	}
 }

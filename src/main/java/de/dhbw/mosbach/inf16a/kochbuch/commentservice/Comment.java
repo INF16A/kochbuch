@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.Recipe;
+import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.RezeptUser;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -36,17 +37,28 @@ public class Comment {
 	private long id;
 
 	@NonNull
+	@Column(columnDefinition = "longtext")
 	private String text;
 
 	@NonNull
 	private Date creationDate;
 
+	// @JsonIgnore
 	@NonNull
-	private Long userID;
+	@ManyToOne
+	@JoinColumn(name = "userId")
+	private RezeptUser user;
 
 	@JsonIgnore
 	@NonNull
 	@ManyToOne
 	@JoinColumn(name = "rezeptId")
 	private Recipe recipe;
+
+	// public Comment(String text, Date creationDate, User user, Recipe recipe){
+	// 	this.text = text;
+	// 	this.creationDate = creationDate;
+	// 	this.user = user;
+	// 	this.recipe = recipe;
+	// }
 }
