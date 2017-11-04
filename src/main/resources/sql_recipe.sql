@@ -4,7 +4,8 @@
  @author Alexander Krieg
  */
 
-INSERT INTO `rezept_user` (`user_id`, `creation_date`, `deletion_date`, `email`, `pw_hash`) VALUES (NULL, '2017-10-01 00:00:00', NULL, 'test@test.de', 'sfhjdsagfkaeshjdkfaksdfkjadshfkjdhaks'), (NULL, '2017-10-15 00:00:00', NULL, 'test2@test.de', 'dfndakjsfhadsjfncalkhesofed');
+INSERT INTO user (username, password, creation_date) VALUES ('I_Bims_1_Mensch', '$2a$10$cJIF6ZmL9AjqqwV2W.16MeNK6brOQ2P4ub7jBq/50xtSWiyfOFJlW',2017-10-15);
+UPDATE `user` SET `creation_date` = '2017-08-14 02:06:04' WHERE `user`.`user_id` = 1 OR `user`.`user_id` = 2;
 
 INSERT INTO `tag` (`tag_id`, `name`) VALUES (NULL, 'bio'), (NULL, 'vegan');
 INSERT INTO `tag` (`tag_id`, `name`) VALUES (NULL, 'einfach'), (NULL, 'aufwändig');
