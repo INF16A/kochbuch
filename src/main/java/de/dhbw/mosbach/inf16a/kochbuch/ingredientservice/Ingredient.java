@@ -44,7 +44,7 @@ public class Ingredient {
 	private Integer unit;
 
 	@NonNull
-	private Double kCalPerUnit;
+	private Double kcalPerUnit;
 
 	@NonNull
 	private Double costPerUnit;
