@@ -2,10 +2,10 @@ package de.dhbw.mosbach.inf16a.kochbuch.ratingservice;
 
 //import de.dhbw.mosbach.inf16a.kochbuch.ratingservice.Rating;
 //import de.dhbw.mosbach.inf16a.kochbuch.ratingservice.RatingRepository;
+import de.dhbw.mosbach.inf16a.kochbuch.authentication.User;
+import de.dhbw.mosbach.inf16a.kochbuch.authentication.UserRepository;
 import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.Recipe;
 import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.RecipeRepository;
-import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.RezeptUser;
-import de.dhbw.mosbach.inf16a.kochbuch.userservice.RezeptUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
  * @author Tim Kühnlein
  * @author Adrian Haase
  * @author Adrian Dumke
+ * @author Theresa Reus
+ * @author Patrick Eichert
  */
 
 @RestController
@@ -21,7 +23,7 @@ public class RatingController {
     @Autowired
     private RecipeRepository recipeRepository;
     @Autowired
-    private RezeptUserRepository userRepository;
+    private UserRepository userRepository;
     @Autowired
     private RatingRepository ratingRepository;
 
@@ -37,7 +39,7 @@ public class RatingController {
     @PostMapping(value = "/rating")
     public Rating updateRating(@RequestBody RatingRequest request)
     {
-        RezeptUser u = userRepository.findOne(request.getUserId());
+        User u = userRepository.findOne(request.getUserId());
         Recipe r = recipeRepository.findOne(request.getRecipeId());
         return this.ratingRepository.save(new Rating(u,r,request.getValue()));    //Wird überschrieben oder hinzugefügt?
     }

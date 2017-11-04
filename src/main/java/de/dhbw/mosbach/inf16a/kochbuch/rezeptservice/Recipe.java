@@ -1,5 +1,6 @@
 package de.dhbw.mosbach.inf16a.kochbuch.rezeptservice;
 
+import de.dhbw.mosbach.inf16a.kochbuch.authentication.User;
 import de.dhbw.mosbach.inf16a.kochbuch.commentservice.Comment;
 import de.dhbw.mosbach.inf16a.kochbuch.ingredientservice.RecipeIngredient;
 import de.dhbw.mosbach.inf16a.kochbuch.ratingservice.Rating;
@@ -52,7 +53,7 @@ public class Recipe {
 	@NonNull
 	@ManyToOne
 	@JoinColumn(name = "userId")
-	private RezeptUser creator;
+	private User creator;
 
 	@NonNull
 	@ManyToMany(cascade = CascadeType.ALL)
