@@ -1,7 +1,5 @@
 package de.dhbw.mosbach.inf16a.kochbuch.rezeptservice;
 
-import java.util.List;
-
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -9,10 +7,8 @@ import org.springframework.data.repository.CrudRepository;
  * @author Enrico Greßer
  * @author Florian Eder
  */
-public interface RecipeRepository extends CrudRepository<Recipe, Long> {
+public interface PictureRepository extends CrudRepository<Picture, Long> {
 
-    List<Recipe> findAll();
-
-    Recipe save(Recipe recipe);
+    Picture save(Picture picture);
 
 }
