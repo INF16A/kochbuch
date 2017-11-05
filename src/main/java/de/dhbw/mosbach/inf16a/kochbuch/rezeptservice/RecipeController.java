@@ -1,12 +1,12 @@
 package de.dhbw.mosbach.inf16a.kochbuch.rezeptservice;
 
+import de.dhbw.mosbach.inf16a.kochbuch.authentication.UserRepository;
 import de.dhbw.mosbach.inf16a.kochbuch.ingredientservice.Ingredient;
 import de.dhbw.mosbach.inf16a.kochbuch.ingredientservice.IngredientRepository;
 import de.dhbw.mosbach.inf16a.kochbuch.ingredientservice.RecipeIngredient;
 import de.dhbw.mosbach.inf16a.kochbuch.ingredientservice.RecipeIngredientRepository;
 import de.dhbw.mosbach.inf16a.kochbuch.tags.Tag;
 import de.dhbw.mosbach.inf16a.kochbuch.tags.TagRepository;
-import de.dhbw.mosbach.inf16a.kochbuch.userservice.RezeptUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,7 +45,7 @@ public class RecipeController {
     private RecipeIngredientRepository recipeIngredientRepository;
 
     @Autowired
-    private RezeptUserRepository rezeptUserRepository;
+    private UserRepository userRepository;
 
     @CrossOrigin
     @GetMapping(value = "/recipes")
@@ -68,7 +68,7 @@ public class RecipeController {
         newRecipe.setCreateDate(new Date());
 
         // TODO creator
-        newRecipe.setCreator(rezeptUserRepository.findOne((long) 1));
+        newRecipe.setCreator(userRepository.findOne((long) 1));
         newRecipe.setName(recipeRequest.getName());
         newRecipe.setDescription(recipeRequest.getDescription());
         newRecipe.setDifficulty(recipeRequest.getDifficulty());
