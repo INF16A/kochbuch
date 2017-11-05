@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+    <bean id="userRepositoryAuthentication" class="de.dhbw.mosbach.inf16a.kochbuch.authentication.UserRepository" />
+    <bean id="userRepositoryRegistration" class="de.dhbw.mosbach.inf16a.kochbuch.registration.UserRepository" />
+
+</beans>
