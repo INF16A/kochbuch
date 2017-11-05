@@ -2,12 +2,8 @@ package de.dhbw.mosbach.inf16a.kochbuch.registration;
 
 import de.dhbw.mosbach.inf16a.kochbuch.authentication.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Arrays;
-import java.util.Optional;
 
 /**
  * @author Annika Schatz
@@ -17,7 +13,7 @@ import java.util.Optional;
 @Service
 public class RegistrationService implements IRegistartionService {
     @Autowired
-    private UserRepository repository;
+    private RegistrationRepository repository;
 
     @Transactional
     @Override
