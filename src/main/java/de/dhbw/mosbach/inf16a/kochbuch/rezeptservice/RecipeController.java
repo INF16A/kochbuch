@@ -22,6 +22,9 @@ import java.util.List;
 /**
  * @author Thomas Hörner
  * @author Theresa Reus
+ * @author Enrico Greßer
+ * @author Florian Eder
+ * @author Patrick Eichert
  */
 @RestController
 public class RecipeController {
