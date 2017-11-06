@@ -42,7 +42,8 @@ public class RatingController {
     {
         User u = userRepository.findOne(request.getUserId());
         Recipe r = recipeRepository.findOne(request.getRecipeId());
-        return this.ratingRepository.save(new Rating(u,r,request.getValue()));    //Wird überschrieben oder hinzugefügt?
+        this.ratingRepository.deleteByRecipeIdAndUserId(request.getRecipeId(), request.getUserId());
+        return this.ratingRepository.save(new Rating(u,r,request.getValue()));
     }
 
     @GetMapping(value="/rating/{recipeID}/count/up")
