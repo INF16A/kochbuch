@@ -10,6 +10,7 @@ import java.util.List;
 
 /**
  * @author 💩 Alexander Krieg
+ * @author Daniel Abel
  * @author Theresa Reus
  * @author Patrick Eichert
  */

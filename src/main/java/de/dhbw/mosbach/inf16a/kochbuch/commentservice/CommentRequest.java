@@ -7,6 +7,7 @@ import lombok.NonNull;
 
 /**
  * @author 💩 Alexander Krieg
+ * @author Daniel Abel
  */
 
 @Data

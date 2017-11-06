@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * @author Alexander Krieg
+ * @author Daniel Abel
  */
 
 public interface CommentRepository extends CrudRepository<Comment, Long>
