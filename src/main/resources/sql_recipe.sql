@@ -4,9 +4,10 @@
  @author Alexander Krieg
  @author Daniel Abel
  @author Marc Reinke
+ @author Thomas Hörner
  */
 
-INSERT INTO user (username, password, creation_date) VALUES ('I_Bims_1_Mensch', '$2a$10$cJIF6ZmL9AjqqwV2W.16MeNK6brOQ2P4ub7jBq/50xtSWiyfOFJlW',2017-10-15);
+INSERT INTO user (username, password, creation_date) VALUES ('I_Bims_1_Mensch', '$2a$10$cJIF6ZmL9AjqqwV2W.16MeNK6brOQ2P4ub7jBq/50xtSWiyfOFJlW', '2017-10-15 02:06:04');
 UPDATE `user` SET `creation_date` = '2017-08-14 02:06:04' WHERE `user`.`user_id` = 1 OR `user`.`user_id` = 2;
 
 INSERT INTO `tag` (`tag_id`, `name`) VALUES (NULL, 'bio'), (NULL, 'vegan');
