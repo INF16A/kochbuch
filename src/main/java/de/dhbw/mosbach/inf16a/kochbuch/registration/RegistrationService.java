@@ -3,7 +3,6 @@ package de.dhbw.mosbach.inf16a.kochbuch.registration;
 import de.dhbw.mosbach.inf16a.kochbuch.authentication.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author Annika Schatz
@@ -11,21 +10,17 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Irina Eurich
  */
 @Service
-public class RegistrationService implements IRegistartionService {
+public class RegistrationService implements IRegistrationService {
     @Autowired
     private RegistrationRepository repository;
 
-    @Transactional
     @Override
-    public User registerNewUserAccount(UserDTO accountDto)
-            throws EmailExistsException {
-
+    public User registerNewUserAccount(final UserDTO accountDto) {
         if (emailExist(accountDto.getEmail())) {
-            throw new EmailExistsException(
-                    "There is an account with that email adress: "
-                            +  accountDto.getEmail());
+            throw new UserAlreadyExistException("There is an account with that email adress: " + accountDto.getEmail());
         }
-        User user = new User();
+        final User user = new User();
+
         user.setUsername(accountDto.getUserName());
         user.setPassword(accountDto.getPassword());
         user.setEmail(accountDto.getEmail());

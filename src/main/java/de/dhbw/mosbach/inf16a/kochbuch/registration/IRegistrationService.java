@@ -8,7 +8,6 @@ import org.springframework.boot.autoconfigure.security.SecurityProperties;
  * @author Tobias Bloch
  * @author Irina Eurich
  */
-public interface IRegistartionService {
-    User registerNewUserAccount(UserDTO accountDto)
-        throws EmailExistsException;
+public interface IRegistrationService {
+    User registerNewUserAccount(UserDTO accountDto) throws UserAlreadyExistException;
 }

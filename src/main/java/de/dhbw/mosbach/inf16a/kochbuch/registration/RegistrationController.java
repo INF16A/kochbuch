@@ -2,17 +2,12 @@ package de.dhbw.mosbach.inf16a.kochbuch.registration;
 
 import de.dhbw.mosbach.inf16a.kochbuch.authentication.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 /**
@@ -24,9 +19,12 @@ import javax.validation.Valid;
 public class RegistrationController {
 
     @Autowired
-    RegistrationService service;
+    IRegistrationService service;
 
-    @GetMapping(value = "/user/registration")
+    @Autowired
+    private ApplicationEventPublisher eventPublisher;
+
+    /*@GetMapping(value = "/user/registration")
     public String showRegistrationForm(WebRequest request, Model model) {
         UserDTO userDto = new UserDTO();
         model.addAttribute("user", userDto);
@@ -43,20 +41,33 @@ public class RegistrationController {
             result.rejectValue("email", "message.regError");
         }
         if (result.hasErrors()) {
-            return new ModelAndView("registration", "user", accountDto);
+            return new ModelAndView("registrationFailed", "user", accountDto);
         }
         else {
             return new ModelAndView("successRegister", "user", accountDto);
         }
+    }*/
+
+    @PostMapping(value = "/user/registration")
+    @ResponseBody
+    public GenericResponse registerUserAccount(@RequestBody UserDTO accountDto, final HttpServletRequest request) {
+        final User registered = service.registerNewUserAccount(accountDto);
+        eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered, request.getLocale(), getAppUrl(request)));
+        return new GenericResponse("success");
     }
-    private User createUserAccount(UserDTO accountDto, BindingResult result) {
+
+    /*private User createUserAccount(UserDTO accountDto, BindingResult result) {
         User registered = null;
         try {
             registered = service.registerNewUserAccount(accountDto);
-        } catch (EmailExistsException e) {
+        } catch (UserAlreadyExistException e) {
             return null;
         }
         return registered;
+    }*/
+
+    private String getAppUrl(HttpServletRequest request) {
+        return "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
     }
 
 }
