@@ -7,6 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 public interface RecipeRepository extends CrudRepository<Recipe, Long> {
 	
 	List <Recipe> findAll();
-	List <Recipe> findRecipeByNameContains(String keyword);
-	List <Recipe> findRecipeByTagsContains(String tag);
+	List <Recipe> findRecipeByNameContaining(String keyword);
+	List <Recipe> findRecipeByTags_nameContaining(String tag);
 }
