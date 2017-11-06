@@ -34,7 +34,8 @@ public class RezeptListenController {
     @CrossOrigin
     @GetMapping(value = "/recipes/{ingredient}")
     public List<Recipe> getRecipesByIngredient(String ingredient) {
-        return recipeRepository.findByIngredientContaining(ingredient); }
+        return recipeRepository.findByIngredientContaining(ingredient);
+    }
 
     @CrossOrigin
     @GetMapping(value = "/recipes/{user}")
