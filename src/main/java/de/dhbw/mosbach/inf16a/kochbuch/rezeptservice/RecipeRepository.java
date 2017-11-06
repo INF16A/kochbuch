@@ -6,12 +6,17 @@ import org.springframework.data.repository.CrudRepository;
 
 /**
  * @author Theresa Reus, Philipp Steigler, Roman Würtemberger und Jarno Wagner
+ * @author Thomas Hörner, Enrico Greßer und Florian Eder
  */
 
 public interface RecipeRepository extends CrudRepository<Recipe, Long> {
-	
-	List <Recipe> findAll();
+
+    List<Recipe> findAll();
+
+    Recipe save(Recipe recipe);
+
 	List <Recipe> findByNameContaining(String name);
+
 	List <Recipe> findByTags_NameContaining(String tag);
 	List <Recipe> findByIngredientContaining(String ingredient);
 	List <Recipe> findByUserContaining(String user);
