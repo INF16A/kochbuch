@@ -20,5 +20,5 @@ public interface RecipeRepository extends CrudRepository<Recipe, Long> {
 
 	List <Recipe> findByTags_NameContaining(String tag);
 
-	List <Recipe> findByCreator(User tempUser);
+	List <Recipe> findByCreator(User user);
 }

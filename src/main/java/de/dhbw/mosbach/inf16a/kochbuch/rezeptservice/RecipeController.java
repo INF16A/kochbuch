@@ -140,7 +140,7 @@ public class RecipeController {
     @CrossOrigin
     @GetMapping(value = "/recipe/creator/{userID}")
     public List<Recipe> getRecipeByCreator(@PathVariable(value = "userID") long userID) {
-        User tempUser = userRepository.findOne((long) userID);
-        return recipeRepository.findByCreator(tempUser);
+        User user = userRepository.findOne((long) userID);
+        return recipeRepository.findByCreator(user);
     }
 }
