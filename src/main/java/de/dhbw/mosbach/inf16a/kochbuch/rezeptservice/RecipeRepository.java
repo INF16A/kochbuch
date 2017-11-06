@@ -13,6 +13,6 @@ public interface RecipeRepository extends CrudRepository<Recipe, Long> {
 	List <Recipe> findAll();
 	List <Recipe> findByNameContaining(String name);
 	List <Recipe> findByTags_NameContaining(String tag);
-	List<Recipe> getRecipesByIngredient(String ingredient);
-	List<Recipe> getRecipesByUser(String user);
+	List <Recipe> findByIngredientContaining(String ingredient);
+	List <Recipe> findByUserContaining(String user);
 }
