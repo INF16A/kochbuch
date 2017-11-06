@@ -20,6 +20,7 @@ import lombok.RequiredArgsConstructor;
  * @author Daniel Abel
  * @author Alexander Krieg
  * @author Daniel Abel
+ * @author Marc Reinke
  *
  */
 @Data

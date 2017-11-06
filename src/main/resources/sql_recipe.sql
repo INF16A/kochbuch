@@ -3,6 +3,7 @@
  @author Patrick Eichert
  @author Alexander Krieg
  @author Daniel Abel
+ @author Marc Reinke
  */
 
 INSERT INTO user (username, password, creation_date) VALUES ('I_Bims_1_Mensch', '$2a$10$cJIF6ZmL9AjqqwV2W.16MeNK6brOQ2P4ub7jBq/50xtSWiyfOFJlW',2017-10-15);

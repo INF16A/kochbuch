@@ -23,6 +23,7 @@ import java.util.List;
  * @author Robert Zebec
  * @author Alexander Krieg
  * @author Daniel Abel
+ * @author Marc Reinke
  *
  */
 @Data

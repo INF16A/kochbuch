@@ -11,6 +11,7 @@ import java.util.List;
 /**
  * @author 💩 Alexander Krieg
  * @author Daniel Abel
+ * @author Marc Reinke
  * @author Theresa Reus
  * @author Patrick Eichert
  */
