@@ -1,6 +1,8 @@
 package de.dhbw.mosbach.inf16a.kochbuch.ratingservice;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author Tim Kühnlein
@@ -12,6 +14,9 @@ public interface RatingRepository extends CrudRepository<Rating, Long> {
     Rating findByRecipeIdAndUserId(long recipeID,long userID);
 
     Long countByRecipeIdAndValue(long recipeid,short ratingvalue);
+
+    @Transactional
+    Long deleteByRecipeIdAndUserId(long recipeID,long userID);
 
     /**
      * geht auch ohne query, siehe oben...
