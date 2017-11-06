@@ -16,8 +16,7 @@ public interface RecipeRepository extends CrudRepository<Recipe, Long> {
     Recipe save(Recipe recipe);
 
 	List <Recipe> findByNameContaining(String name);
-
 	List <Recipe> findByTags_NameContaining(String tag);
-	List <Recipe> findByIngredientContaining(String ingredient);
+	List <Recipe> findByIngredient_Id(String ingredient);
 	List <Recipe> findByUserContaining(String user);
 }
