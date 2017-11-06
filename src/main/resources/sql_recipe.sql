@@ -2,6 +2,8 @@
  @author André Berberich
  @author Patrick Eichert
  @author Alexander Krieg
+ @author Daniel Abel
+ @author Marc Reinke
  @author Thomas Hörner
  */
 
