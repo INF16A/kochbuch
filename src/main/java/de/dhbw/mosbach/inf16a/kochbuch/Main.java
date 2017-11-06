@@ -2,6 +2,7 @@ package de.dhbw.mosbach.inf16a.kochbuch;
 
 import de.dhbw.mosbach.inf16a.kochbuch.authentication.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
@@ -14,7 +15,11 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.savedrequest.NullRequestCache;
+import org.springframework.boot.SpringApplication;
 
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 /**
  * @author Patrick Hahn
  * @author Annika Schatz
@@ -36,6 +41,16 @@ public class Main
 	@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 	protected static class SecurityConfiguration extends WebSecurityConfigurerAdapter
 	{
+		@Bean
+		public WebMvcConfigurer corsConfigurer() {
+			return new WebMvcConfigurerAdapter() {
+				@Override
+				public void addCorsMappings(CorsRegistry registry) {
+					registry.addMapping("/**");
+				}
+			};
+		}
+
 		@Autowired
 		HttpAuthenticationEntryPoint entryPoint;
 
@@ -57,6 +72,7 @@ public class Main
 		@Override
 		protected void configure(HttpSecurity http) throws Exception
 		{
+			http.cors();
 			http.exceptionHandling()
 					.authenticationEntryPoint(entryPoint);
 
