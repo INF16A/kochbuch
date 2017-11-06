@@ -21,6 +21,8 @@ import lombok.RequiredArgsConstructor;
 
 /**
  * @author Alexander Krieg
+ * @author Daniel Abel
+ * @author Marc Reinke
  * @author Patrick Eichert
  * @author Theresa Reus
  * @author Thomas Hörner

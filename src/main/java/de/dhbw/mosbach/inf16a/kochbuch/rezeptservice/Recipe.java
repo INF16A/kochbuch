@@ -22,6 +22,8 @@ import java.util.List;
  * @author André Berberich
  * @author Robert Zebec
  * @author Alexander Krieg
+ * @author Daniel Abel
+ * @author Marc Reinke
  *
  */
 @Data
