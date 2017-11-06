@@ -36,6 +36,7 @@ public class RatingController {
         else return 0;
     }
 
+    @CrossOrigin
     @PostMapping(value = "/rating")
     public Rating updateRating(@RequestBody RatingRequest request)
     {
