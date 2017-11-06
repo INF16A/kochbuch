@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  * @author Team Chrocorg: Christian Werner, Yoco Harrmann und Georg Frey
+ *         Philipp Steigler, Roman Würtemberger und Jarno Wagner
  */
 
 
@@ -28,6 +29,18 @@ public class RezeptListenController {
     @GetMapping(value = "/recipes/{tag}")
     public List<Recipe> getRecipesByTag(String tag) {
         return recipeRepository.findByTags_NameContaining(tag);
+    }
+
+    @CrossOrigin
+    @GetMapping(value = "/recipes/{ingredient}")
+    public List<Recipe> getRecipesByIngredient(String ingredient) {
+        return recipeRepository.findByIngredient_Id(ingredient);
+    }
+
+    @CrossOrigin
+    @GetMapping(value = "/recipes/{user}")
+    public List<Recipe> getRecipesByUser(String user) {
+        return recipeRepository.findByUserContaining(user);
     }
 
 }
