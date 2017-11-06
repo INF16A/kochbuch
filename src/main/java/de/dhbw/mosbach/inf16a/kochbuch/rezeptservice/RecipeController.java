@@ -63,6 +63,12 @@ public class RecipeController {
     }
 
     @CrossOrigin
+    @GetMapping(value = "/recipe/top3Creationdate")
+    public List<Recipe> findTop3ByOrderByCreateDateAsc() {
+        return recipeRepository.findTop3ByOrderByCreateDateDesc();
+    }
+
+    @CrossOrigin
     @PostMapping(value = "/recipe/create")
     public Recipe createRecipe(@RequestBody RecipeRequest recipeRequest) {
 

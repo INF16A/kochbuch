@@ -18,4 +18,6 @@ public interface RecipeRepository extends CrudRepository<Recipe, Long> {
 	List <Recipe> findByNameContaining(String name);
 
 	List <Recipe> findByTags_NameContaining(String tag);
+
+    List<Recipe> findTop3ByOrderByCreateDateDesc();
 }
