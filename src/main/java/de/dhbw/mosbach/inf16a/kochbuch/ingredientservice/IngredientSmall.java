@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 @Data
 @RequiredArgsConstructor
 @NoArgsConstructor
-public class IngredientLight {
+public class IngredientSmall {
 
 	@NonNull
 	private Long unitId;

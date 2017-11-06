@@ -36,10 +36,10 @@ public class IngredientController {
 
     @CrossOrigin
     @PostMapping(value = "/ingredient")
-    public IngredientLight addIngredient(@RequestBody Ingredient newIngredient) {
+    public IngredientSmall addIngredient(@RequestBody Ingredient newIngredient) {
         Ingredient ingredient = ingredientRepository.save(newIngredient);
 
-        return new IngredientLight(Long.valueOf(ingredient.getUnit()), ingredient.getId(), ingredient.getName());
+        return new IngredientSmall(Long.valueOf(ingredient.getUnit()), ingredient.getId(), ingredient.getName());
     }
 
     /**
@@ -47,14 +47,14 @@ public class IngredientController {
      */
     @CrossOrigin
     @GetMapping(value = "/ingredient/search")
-    public List<IngredientLight> findIngredient(@RequestParam("q") String name) {
+    public List<IngredientSmall> findIngredient(@RequestParam("q") String name) {
         if (name == null || name.isEmpty())
             return new ArrayList<>();
 
         // unnötige Daten rauswerfen
-        List<IngredientLight> tempIngr = new ArrayList<>();
+        List<IngredientSmall> tempIngr = new ArrayList<>();
         for (Ingredient ingredient : ingredientRepository.findByNameContainingIgnoreCase(name))
-            tempIngr.add(new IngredientLight(Long.valueOf(ingredient.getUnit()), ingredient.getId(), ingredient.getName()));
+            tempIngr.add(new IngredientSmall(Long.valueOf(ingredient.getUnit()), ingredient.getId(), ingredient.getName()));
         return tempIngr;
     }
 }
