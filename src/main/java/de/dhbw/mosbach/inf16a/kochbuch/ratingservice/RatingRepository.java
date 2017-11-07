@@ -1,6 +1,5 @@
 package de.dhbw.mosbach.inf16a.kochbuch.ratingservice;
 
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,7 +18,7 @@ public interface RatingRepository extends CrudRepository<Rating, Long> {
     Long deleteByRecipeIdAndUserId(long recipeID,long userID);
 
     /**
-     * geht auch ohne query, siehe oben...
+     * First solution for counting
      *
      * @Query("SELECT COUNT(r) FROM Rating r WHERE r.recipe.id=?1 AND r.value=?2")
      * Long myCount(long recipeid, short ratingvalue);
