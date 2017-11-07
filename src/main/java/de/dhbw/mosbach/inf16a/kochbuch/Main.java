@@ -99,6 +99,7 @@ public class Main
 
 			http.authorizeRequests()
 					.antMatchers(HttpMethod.POST, "/comment").hasRole("USER")
+					.antMatchers(HttpMethod.DELETE, "/comment/delete").hasRole("USER")
 					.antMatchers(HttpMethod.GET, "/auth/user").hasRole("USER")
 					.anyRequest().permitAll();
 		}

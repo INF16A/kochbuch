@@ -43,8 +43,8 @@ public class CommentController
 	}
 
 	@CrossOrigin
-	@PostMapping(value = "/comment/delete")
-	public void deleteComment(@RequestBody long commentID)
+	@DeleteMapping(value = "/comment/delete/{commentID}")
+	public void deleteCommeent(@PathVariable(value = "commentID") long commentID)
 	// public Comment addComment(@RequestBody Comment theNewComment)
 	{
 		// Recipe re = recipeRepository.findOne(request.getRecipeId());
