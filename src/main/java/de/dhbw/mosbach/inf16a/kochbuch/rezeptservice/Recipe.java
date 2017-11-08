@@ -59,7 +59,8 @@ public class Recipe {
 
 	@NonNull
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(joinColumns = @JoinColumn(name = "rezeptId"), inverseJoinColumns = @JoinColumn(name = "tagId"))
+	@JoinTable(joinColumns = @JoinColumn(name = "rezeptId"), inverseJoinColumns = @JoinColumn(name = "tagId"),uniqueConstraints = {@UniqueConstraint(
+            columnNames = {"rezeptId", "tagId"})})
 	private List<Tag> tags;
 
 	@NonNull

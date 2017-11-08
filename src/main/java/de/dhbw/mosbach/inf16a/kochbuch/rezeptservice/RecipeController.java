@@ -1,5 +1,6 @@
 package de.dhbw.mosbach.inf16a.kochbuch.rezeptservice;
 
+import de.dhbw.mosbach.inf16a.kochbuch.authentication.User;
 import de.dhbw.mosbach.inf16a.kochbuch.authentication.UserRepository;
 import de.dhbw.mosbach.inf16a.kochbuch.ingredientservice.Ingredient;
 import de.dhbw.mosbach.inf16a.kochbuch.ingredientservice.IngredientRepository;
@@ -27,6 +28,7 @@ import java.util.List;
  * @author Enrico Greßer
  * @author Florian Eder
  * @author Patrick Eichert
+ * @author Robert Zebec
  */
 @RestController
 public class RecipeController {
@@ -151,5 +153,12 @@ public class RecipeController {
         newRecipe.setRecipeIngredients(recipeIngredients);
 
         return this.recipeRepository.save(newRecipe);
+    }
+
+    @CrossOrigin
+    @GetMapping(value = "/recipes/creator/{userID}")
+    public List<Recipe> getRecipeByCreator(@PathVariable(value = "userID") long userID) {
+        User user = userRepository.findOne((long) userID);
+        return recipeRepository.findByCreator(user);
     }
 }

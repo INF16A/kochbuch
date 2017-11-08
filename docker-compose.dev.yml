@@ -1,0 +1,9 @@
+version: '2'
+services:
+  database:
+    environment:
+      - "MYSQL_ROOT_PASSWORD=kochbuch-root-pw"
+      - "MYSQL_USER=kochbuch"
+      - "MYSQL_PASSWORD=kochbuch-user-pw"
+    ports:
+      - 3306:3306

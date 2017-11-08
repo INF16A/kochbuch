@@ -9,7 +9,9 @@ import lombok.NonNull;
  * @author Adrian Dumke
  */
 
-
+/**
+ * Used as JSON-Body in POST-method updateRating(RatingRequest)
+ */
 @Data
 public class RatingRequest {
 

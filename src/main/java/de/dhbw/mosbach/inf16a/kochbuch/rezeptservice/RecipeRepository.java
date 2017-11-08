@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
+import de.dhbw.mosbach.inf16a.kochbuch.authentication.User;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -12,6 +13,7 @@ import org.springframework.data.repository.CrudRepository;
  * @author Florian Eder
  * @author Theresa Reus
  * @author Daniel Abel
+ * @author Robert Zebec
  */
 public interface RecipeRepository extends CrudRepository<Recipe, Long> {
 
@@ -27,4 +29,6 @@ public interface RecipeRepository extends CrudRepository<Recipe, Long> {
 
     @Query("SELECT re FROM Recipe re, Rating ra where re.id = ra.recipe group by re.id order by sum(ra.value) desc")
     List<Recipe> findTop3ByRating(Pageable pageable);
+
+    List <Recipe> findByCreator(User user);
 }
