@@ -2,12 +2,17 @@ version: '2'
 services:
   database:
     image: mysql
+    restart: always
     environment:
+      - "MYSQL_ROOT_PASSWORD=kochbuch-root-pw"
+      - "MYSQL_USER=kochbuch"
+      - "MYSQL_PASSWORD=kochbuch-user-pw"
       - "MYSQL_DATABASE=kochbuch"
     volumes:
       - database-volume:/var/lib/mysql
   backend:
     image: r.patrick246.de/inf16a/kochbuch-backend
+    restart: always
     links:
       - database:db
     ports:
