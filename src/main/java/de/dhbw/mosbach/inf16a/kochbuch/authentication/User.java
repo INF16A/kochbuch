@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import org.hibernate.validator.internal.util.privilegedactions.GetMethod;
 
 /**
  * @author Patrick Hahn
@@ -16,6 +17,7 @@ import java.util.Date;
  * @author Patrick Eichert
  * @author Theresa Reus
  * @author Thomas Hörner
+ * @author Marc Reinke
  */
 
 
@@ -42,4 +44,8 @@ public class User
 
 	@NonNull
 	private Date deletionDate;
+
+	public Long getUserID(){
+		return id;
+	}
 }
