@@ -40,13 +40,16 @@ public class Rating {
     @JoinColumn(name = "rezeptId")
     private Recipe recipe;
 
-    private short value;    //-1,Null,1
+    /**
+     * Range: -1 / 0 / 1
+     */
+    private short value;
 
-    //sonst läuft maven nicht durch s. RatingController l 44
-    public Rating(User u, Recipe r, short value)
-    {
-        this.user = u;
-        this.recipe = r;
+
+    // Without constructor Maven will not build @ RatingController l. 46
+    public Rating(User user, Recipe recipe, short value) {
+        this.user = user;
+        this.recipe = recipe;
         this.value = value;
     }
 }
