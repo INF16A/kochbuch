@@ -5,9 +5,11 @@ import de.dhbw.mosbach.inf16a.kochbuch.ingredientservice.Ingredient;
 import de.dhbw.mosbach.inf16a.kochbuch.ingredientservice.IngredientRepository;
 import de.dhbw.mosbach.inf16a.kochbuch.ingredientservice.RecipeIngredient;
 import de.dhbw.mosbach.inf16a.kochbuch.ingredientservice.RecipeIngredientRepository;
+import de.dhbw.mosbach.inf16a.kochbuch.ratingservice.RatingController;
 import de.dhbw.mosbach.inf16a.kochbuch.tags.Tag;
 import de.dhbw.mosbach.inf16a.kochbuch.tags.TagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -50,6 +52,9 @@ public class RecipeController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private RatingController ratingController;
+
     @CrossOrigin
     @GetMapping(value = "/recipes")
     public List<Recipe> recipe() {
@@ -66,6 +71,12 @@ public class RecipeController {
     @GetMapping(value = "/recipe/top3Creationdate")
     public List<Recipe> findTop3ByOrderByCreateDateAsc() {
         return recipeRepository.findTop3ByOrderByCreateDateDesc();
+    }
+
+    @CrossOrigin
+    @GetMapping(value = "/recipe/top3rating")
+    public List<Recipe> findTop3BByRating() {
+        return recipeRepository.findTop3ByRating(new PageRequest(0,3));
     }
 
     @CrossOrigin
