@@ -25,6 +25,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * @author Annika Schatz
  * @author Armin Beck
  * @author Leandro Späth
+ * @author Marc Reinke
  */
 
 
@@ -102,8 +103,7 @@ public class Main
 					.antMatchers(HttpMethod.DELETE, "/comment/*").hasRole("USER")
 					.antMatchers(HttpMethod.GET, "/auth/user").hasRole("USER")
 					.anyRequest().permitAll();
-		}
-
+		} 
 		@Override
 		protected void configure(AuthenticationManagerBuilder auth) throws Exception
 		{
