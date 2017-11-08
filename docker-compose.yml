@@ -12,5 +12,12 @@ services:
       - 3306:3306
     volumes:
       - database-volume:/var/lib/mysql
+  backend:
+    image: r.patrick246.de/inf16a/kochbuch-backend
+    build: .
+    links:
+      - database:db
+    ports:
+      - 8080:8080
 volumes:
   database-volume:
