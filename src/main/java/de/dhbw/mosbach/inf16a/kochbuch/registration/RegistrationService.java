@@ -19,6 +19,9 @@ public class RegistrationService implements IRegistrationService {
         if (emailExist(accountDto.getEmail())) {
             throw new UserAlreadyExistException("There is an account with that email adress: " + accountDto.getEmail());
         }
+        if (usernameExist(accountDto.getUserName())) {
+            throw new UserAlreadyExistException("There is an account with that username: " + accountDto.getUserName());
+        }
         final User user = new User();
 
         user.setUsername(accountDto.getUserName());
@@ -28,6 +31,13 @@ public class RegistrationService implements IRegistrationService {
     }
     private boolean emailExist(String email) {
         User user = repository.findByEmail(email);
+        if (user != null) {
+            return true;
+        }
+        return false;
+    }
+    private boolean usernameExist(String username) {
+        User user = repository.findByUsername(username);
         if (user != null) {
             return true;
         }

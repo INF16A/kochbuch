@@ -24,30 +24,6 @@ public class RegistrationController {
     @Autowired
     private ApplicationEventPublisher eventPublisher;
 
-    /*@GetMapping(value = "/user/registration")
-    public String showRegistrationForm(WebRequest request, Model model) {
-        UserDTO userDto = new UserDTO();
-        model.addAttribute("user", userDto);
-        return "registration";
-    }
-
-    @PostMapping(value ="/user/registration")
-    public ModelAndView registerUserAccount (@ModelAttribute("user")@Valid UserDTO accountDto, BindingResult result, WebRequest request, Errors errors){
-        User registered = new User();
-        if (!result.hasErrors()) {
-            registered = createUserAccount(accountDto, result);
-        }
-        if (registered == null) {
-            result.rejectValue("email", "message.regError");
-        }
-        if (result.hasErrors()) {
-            return new ModelAndView("registrationFailed", "user", accountDto);
-        }
-        else {
-            return new ModelAndView("successRegister", "user", accountDto);
-        }
-    }*/
-
     @PostMapping(value = "/user/registration")
     @ResponseBody
     public GenericResponse registerUserAccount(@RequestBody UserDTO accountDto, final HttpServletRequest request) {
@@ -55,16 +31,6 @@ public class RegistrationController {
         eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered, request.getLocale(), getAppUrl(request)));
         return new GenericResponse("success");
     }
-
-    /*private User createUserAccount(UserDTO accountDto, BindingResult result) {
-        User registered = null;
-        try {
-            registered = service.registerNewUserAccount(accountDto);
-        } catch (UserAlreadyExistException e) {
-            return null;
-        }
-        return registered;
-    }*/
 
     private String getAppUrl(HttpServletRequest request) {
         return "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();

@@ -16,4 +16,6 @@ import java.util.Optional;
 @Service
 public interface RegistrationRepository extends JpaRepository<User, Long> {
 	User findByEmail(String email);
+
+	User findByUsername(String username);
 }
