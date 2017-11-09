@@ -13,6 +13,10 @@ import java.util.List;
  * @author Patrick Hahn
  * @author Armin Beck
  * @author Leandro Späth
+ * @author Annika Schatz
+ * @author Tobias Bloch
+ * @author Irina Eurich
+ * @author Endrit Çallaki
  */
 
 
