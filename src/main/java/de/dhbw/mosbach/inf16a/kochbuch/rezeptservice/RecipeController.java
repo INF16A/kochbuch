@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -31,8 +32,6 @@ import java.util.List;
  * @author Robert Zebec
  * @author Team Chrocorg: Christian Werner, Yoco Harrmann und Georg Frey
  * @author Jarno Wagner, Philipp Steigler, Roman Würtemberger, Yoco Harrmann
-
-
  */
 
 @RestController
@@ -163,7 +162,7 @@ public class RecipeController {
     @CrossOrigin
     @GetMapping(value = "/recipes/creator/{userID}")
     public List<Recipe> getRecipeByCreator(@PathVariable(value = "userID") long userID) {
-        User user = userRepository.findOne((long) userID);
+        User user = userRepository.findOne(userID);
         return recipeRepository.findByCreator(user);
     }
 
@@ -186,17 +185,17 @@ public class RecipeController {
 
 
     /* Anfang Jarno, Philipp, Roman, Yoco */
-        @CrossOrigin
-        @GetMapping(value = "/recipes?user=id")
-        public List<Recipe> getRecipesByUser(String user) {
-            return recipeRepository.findByUserContaining(user);
-        }
+    @CrossOrigin
+    @GetMapping(value = "/recipes/search", params = "user")
+    public List<Recipe> getRecipesByUsername(@RequestParam String user) {
+        return recipeRepository.findByCreator_UsernameIgnoreCase(user);
+    }
 
-        @CrossOrigin
-        @GetMapping(value = "/recipes?ingredient=id")
-        public List<Recipe> getRecipesByIngredient(String ingredient) {
-            return recipeRepository.findByIngredients_NameContaining(ingredient);
-        }
+    @CrossOrigin
+    @GetMapping(value = "/recipes/search", params = "ingredient")
+    public List<Recipe> getRecipesByIngredientName(@RequestParam String ingredient) {
+        return recipeRepository.findByRecipeIngredients_Ingredient_NameIgnoreCase(ingredient);
+    }
     /* Ende Jarno, Philipp, Roman, Yoco */
 
 }
