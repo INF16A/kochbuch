@@ -6,9 +6,17 @@ import java.util.List;
 
 /**
  * @author André Berberich
+ * @author Thomas Hörner
+ * 
  */
-
 public interface IngredientRepository extends CrudRepository<Ingredient, Long> {
-    Ingredient findFirstById(long userID);
-    List<Ingredient> findAll();
+
+	Ingredient findFirstById(long userID);
+
+	List<Ingredient> findAll();
+
+	/**
+	 * @author Thomas Hörner
+	 */
+	List<Ingredient> findByNameContainingIgnoreCase(String name);
 }

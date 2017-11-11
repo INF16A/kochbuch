@@ -1,5 +1,6 @@
 package de.dhbw.mosbach.inf16a.kochbuch.rezeptservice;
 
+import de.dhbw.mosbach.inf16a.kochbuch.authentication.User;
 import de.dhbw.mosbach.inf16a.kochbuch.commentservice.Comment;
 import de.dhbw.mosbach.inf16a.kochbuch.ingredientservice.RecipeIngredient;
 import de.dhbw.mosbach.inf16a.kochbuch.ratingservice.Rating;
@@ -21,6 +22,8 @@ import java.util.List;
  * @author André Berberich
  * @author Robert Zebec
  * @author Alexander Krieg
+ * @author Daniel Abel
+ * @author Marc Reinke
  *
  */
 @Data
@@ -52,11 +55,12 @@ public class Recipe {
 	@NonNull
 	@ManyToOne
 	@JoinColumn(name = "userId")
-	private RezeptUser creator;
+	private User creator;
 
 	@NonNull
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(joinColumns = @JoinColumn(name = "rezeptId"), inverseJoinColumns = @JoinColumn(name = "tagId"))
+	@JoinTable(joinColumns = @JoinColumn(name = "rezeptId"), inverseJoinColumns = @JoinColumn(name = "tagId"),uniqueConstraints = {@UniqueConstraint(
+            columnNames = {"rezeptId", "tagId"})})
 	private List<Tag> tags;
 
 	@NonNull

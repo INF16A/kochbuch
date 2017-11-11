@@ -7,11 +7,17 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
+import org.hibernate.validator.internal.util.privilegedactions.GetMethod;
 
 /**
  * @author Patrick Hahn
  * @author Armin Beck
  * @author Leandro Späth
+ * @author Patrick Eichert
+ * @author Theresa Reus
+ * @author Thomas Hörner
+ * @author Marc Reinke
  */
 
 
@@ -23,6 +29,7 @@ public class User
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "userId")
 	private Long id;
 
 	@Column(nullable = false, unique = true)
@@ -31,4 +38,14 @@ public class User
 
 	@JsonIgnore
 	private String password;
+
+	@NonNull
+	private Date creationDate;
+
+	@NonNull
+	private Date deletionDate;
+
+	public Long getUserID(){
+		return id;
+	}
 }

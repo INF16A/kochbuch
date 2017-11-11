@@ -1,14 +1,22 @@
 package de.dhbw.mosbach.inf16a.kochbuch.commentservice;
 
+import de.dhbw.mosbach.inf16a.kochbuch.authentication.User;
+import de.dhbw.mosbach.inf16a.kochbuch.authentication.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.*;
-import de.dhbw.mosbach.inf16a.kochbuch.userservice.RezeptUserRepository;
+import de.dhbw.mosbach.inf16a.kochbuch.authentication.*;
+import org.springframework.security.core.Authentication;
 
+import java.security.Principal;
 import java.util.List;
 
 /**
  * @author 💩 Alexander Krieg
+ * @author Daniel Abel
+ * @author Marc Reinke
+ * @author Theresa Reus
+ * @author Patrick Eichert
  */
 
 @RestController
@@ -22,8 +30,13 @@ public class CommentController
 	private RecipeRepository recipeRepository;
 
 	@Autowired
-	private RezeptUserRepository userRepository;
+	private UserRepository userRepository;
 
+	@Autowired
+	private UserController userController;
+
+	@Autowired
+	private TokenManager tokenManager;
 
 	@GetMapping(value = "/comments")
 	public List<Comment> comments()
@@ -38,14 +51,22 @@ public class CommentController
 	}
 
 	@CrossOrigin
-	@PostMapping(value = "/comment/delete")
-	public void deleteComment(@RequestBody long commentID)
+	@DeleteMapping(value = "/comment/{commentID}")
+	public void deleteComment(@PathVariable(value = "commentID") long commentID, @RequestHeader Principal p)
 	// public Comment addComment(@RequestBody Comment theNewComment)
 	{
+		User user = userController.getUser(p);
+		Comment comment = commentRepository.findOne(commentID);
+
 		// Recipe re = recipeRepository.findOne(request.getRecipeId());
 		// User usr = userRepository.findOne(request.getUserId());
 		// Comment c = new Comment(request.getText(), request.getCreationDate(), usr, re);
-		commentRepository.delete(commentID);
+		if(user.getUserID() == comment.getUser().getUserID()){
+			commentRepository.delete(commentID);
+		}
+		else{
+			System.out.println("User: "+user.getUserID()+"not authorized to delete comment: "+commentID);
+		}
 		// return this.commentRepository.save(new Comment(request.getText(), request.getCreationDate(), usr, re));
 		// return commentRepository.findAllByOrderByCreationDateDesc();
 		// return c;
@@ -57,7 +78,7 @@ public class CommentController
 	// public Comment addComment(@RequestBody Comment theNewComment)
 	{
 		Recipe re = recipeRepository.findOne(request.getRecipeId());
-		RezeptUser usr = userRepository.findOne(request.getUserId());
+		User usr = userRepository.findOne(request.getUserId());
 		return this.commentRepository.save(new Comment(request.getText(), request.getCreationDate(), usr, re));
 		
 		// return commentRepository.findAllByOrderByCreationDateDesc();

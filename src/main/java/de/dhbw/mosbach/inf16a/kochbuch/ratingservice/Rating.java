@@ -1,22 +1,21 @@
 package de.dhbw.mosbach.inf16a.kochbuch.ratingservice;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import de.dhbw.mosbach.inf16a.kochbuch.authentication.User;
 import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.Recipe;
-import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.RezeptUser;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * @author Tim Kühnlein
  * @author Adrian Haase
  * @author Adrian Dumke
+ * @author Theresa Reus
+ * @author Patrick Eichert
  */
 
 @Data
@@ -33,7 +32,7 @@ public class Rating {
     @NonNull
     @ManyToOne
     @JoinColumn(name = "userId")
-    private RezeptUser user;
+    private User user;
 
     @JsonIgnore
     @NonNull
@@ -41,13 +40,16 @@ public class Rating {
     @JoinColumn(name = "rezeptId")
     private Recipe recipe;
 
-    private short value;    //-1,Null,1
+    /**
+     * Range: -1 / 0 / 1
+     */
+    private short value;
 
-    //sonst läuft maven nicht durch s. RatingController l 44
-    public Rating(RezeptUser u, Recipe r, short value)
-    {
-        this.user = u;
-        this.recipe = r;
+
+    // Without constructor Maven will not build @ RatingController l. 46
+    public Rating(User user, Recipe recipe, short value) {
+        this.user = user;
+        this.recipe = recipe;
         this.value = value;
     }
 }

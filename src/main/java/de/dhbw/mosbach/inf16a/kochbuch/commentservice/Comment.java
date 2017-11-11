@@ -12,8 +12,8 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import de.dhbw.mosbach.inf16a.kochbuch.authentication.User;
 import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.Recipe;
-import de.dhbw.mosbach.inf16a.kochbuch.rezeptservice.RezeptUser;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -21,6 +21,8 @@ import lombok.RequiredArgsConstructor;
 
 /**
  * @author Alexander Krieg
+ * @author Daniel Abel
+ * @author Marc Reinke
  * @author Patrick Eichert
  * @author Theresa Reus
  * @author Thomas Hörner
@@ -47,7 +49,7 @@ public class Comment {
 	@NonNull
 	@ManyToOne
 	@JoinColumn(name = "userId")
-	private RezeptUser user;
+	private User user;
 
 	@JsonIgnore
 	@NonNull
@@ -61,4 +63,8 @@ public class Comment {
 	// 	this.user = user;
 	// 	this.recipe = recipe;
 	// }
+
+	public User getUser(){
+		return user;
+	}
 }
