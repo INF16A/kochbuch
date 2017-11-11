@@ -8,7 +8,8 @@ import org.springframework.data.repository.CrudRepository;
  * @author Thomas Hörner
  * @author Enrico Greßer
  * @author Florian Eder
- * @author Yoco Harrmann
+ * @author Yoco Harrmann, Christian Werner, Georg Frey
+ * @author Jarno Wagner, Phlipp Steigler, Roman Würtemberger, Yoco Harrmann
  */
 public interface RecipeRepository extends CrudRepository<Recipe, Long> {
 
@@ -16,15 +17,13 @@ public interface RecipeRepository extends CrudRepository<Recipe, Long> {
 
     Recipe save(Recipe recipe);
 
-
-
-    /* Yoco Harrmann */
+    /* Yoco Harrmann, Christian Werner, Georg Frey */
 	List <Recipe> findByNameContaining(String name);
-
 	List <Recipe> findByTags_NameContaining(String tag);
+    /* Ende Yoco, Christian, Georg */
 
+    /* Jarno Wagner, Phlipp Steigler, Roman Würtemberger, Yoco Harrmann */
     List <Recipe> findByIngredients_NameContaining(String tag);
-
-    // List <Recipe> findByUsernameContaining(String tag);
-    /* Ende Yoco */
+    List <Recipe> findByUserContaining(String tag);
+    /* Ende Jarno, Philipp, Roman, Yoco */
 }

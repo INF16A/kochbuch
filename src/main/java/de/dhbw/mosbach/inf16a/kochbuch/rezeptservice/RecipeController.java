@@ -25,7 +25,10 @@ import java.util.List;
  * @author Enrico Greßer
  * @author Florian Eder
  * @author Patrick Eichert
+ * @author Team Chrocorg: Christian Werner, Yoco Harrmann und Georg Frey
+ * @author Jarno Wagner, Philipp Steigler, Roman Würtemberger, Yoco Harrmann
  */
+
 @RestController
 public class RecipeController {
 
@@ -135,4 +138,38 @@ public class RecipeController {
 
         return this.recipeRepository.save(newRecipe);
     }
+
+
+
+    //implementation for search page
+    /** Anfang Christian Werner, Yoco Harrmann, Georg Frey */
+
+        @CrossOrigin
+        @GetMapping(value = "/recipes/{name}")
+        public List<Recipe> getRecipesByName(String name) {
+            return recipeRepository.findByNameContaining(name);
+        }
+
+        @CrossOrigin
+        @GetMapping(value = "/recipes/{tag}")
+        public List<Recipe> getRecipesByTag(String tag) {
+            return recipeRepository.findByTags_NameContaining(tag);
+        }
+    /* Ende Christian, Yoco, Georg */
+
+
+
+    /* Anfang Jarno, Philipp, Roman, Yoco */
+        @CrossOrigin
+        @GetMapping(value = "/recipes?user=id")
+        public List<Recipe> getRecipesByUser(String user) {
+            return recipeRepository.findByUserContaining(user);
+        }
+
+        @CrossOrigin
+        @GetMapping(value = "/recipes?ingredient=id")
+        public List<Recipe> getRecipesByIngredient(String ingredient) {
+            return recipeRepository.findByIngredients_NameContaining(ingredient);
+        }
+    /* Ende Jarno, Philipp, Roman, Yoco */
 }
