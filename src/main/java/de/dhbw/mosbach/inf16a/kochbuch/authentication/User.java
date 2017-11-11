@@ -45,7 +45,4 @@ public class User
 	@NonNull
 	private Date deletionDate;
 
-	public Long getUserID(){
-		return id;
-	}
 }

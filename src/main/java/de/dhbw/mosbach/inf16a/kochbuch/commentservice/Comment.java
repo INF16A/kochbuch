@@ -64,7 +64,4 @@ public class Comment {
 	// 	this.recipe = recipe;
 	// }
 
-	public User getUser(){
-		return user;
-	}
 }

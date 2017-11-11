@@ -61,11 +61,11 @@ public class CommentController
 		// Recipe re = recipeRepository.findOne(request.getRecipeId());
 		// User usr = userRepository.findOne(request.getUserId());
 		// Comment c = new Comment(request.getText(), request.getCreationDate(), usr, re);
-		if(user.getUserID() == comment.getUser().getUserID()){
+		if(user.getId() == comment.getUser().getId()){
 			commentRepository.delete(commentID);
 		}
 		else{
-			System.out.println("User: "+user.getUserID()+"not authorized to delete comment: "+commentID);
+			System.out.println("User: "+user.getId()+"not authorized to delete comment: "+commentID);
 		}
 		// return this.commentRepository.save(new Comment(request.getText(), request.getCreationDate(), usr, re));
 		// return commentRepository.findAllByOrderByCreationDateDesc();
