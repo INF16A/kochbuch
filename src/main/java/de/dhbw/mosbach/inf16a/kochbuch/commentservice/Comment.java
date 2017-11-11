@@ -63,4 +63,8 @@ public class Comment {
 	// 	this.user = user;
 	// 	this.recipe = recipe;
 	// }
+
+	public User getUser(){
+		return user;
+	}
 }

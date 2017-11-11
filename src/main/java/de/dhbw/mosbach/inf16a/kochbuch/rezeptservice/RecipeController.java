@@ -1,13 +1,16 @@
 package de.dhbw.mosbach.inf16a.kochbuch.rezeptservice;
 
+import de.dhbw.mosbach.inf16a.kochbuch.authentication.User;
 import de.dhbw.mosbach.inf16a.kochbuch.authentication.UserRepository;
 import de.dhbw.mosbach.inf16a.kochbuch.ingredientservice.Ingredient;
 import de.dhbw.mosbach.inf16a.kochbuch.ingredientservice.IngredientRepository;
 import de.dhbw.mosbach.inf16a.kochbuch.ingredientservice.RecipeIngredient;
 import de.dhbw.mosbach.inf16a.kochbuch.ingredientservice.RecipeIngredientRepository;
+import de.dhbw.mosbach.inf16a.kochbuch.ratingservice.RatingController;
 import de.dhbw.mosbach.inf16a.kochbuch.tags.Tag;
 import de.dhbw.mosbach.inf16a.kochbuch.tags.TagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,8 +28,11 @@ import java.util.List;
  * @author Enrico Greßer
  * @author Florian Eder
  * @author Patrick Eichert
+ * @author Robert Zebec
  * @author Team Chrocorg: Christian Werner, Yoco Harrmann und Georg Frey
  * @author Jarno Wagner, Philipp Steigler, Roman Würtemberger, Yoco Harrmann
+
+
  */
 
 @RestController
@@ -53,6 +59,9 @@ public class RecipeController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private RatingController ratingController;
+
     @CrossOrigin
     @GetMapping(value = "/recipes")
     public List<Recipe> recipe() {
@@ -63,6 +72,18 @@ public class RecipeController {
     @GetMapping(value = "/recipe/{id}")
     public Recipe getRecipeById(@PathVariable(value = "id") long id) {
         return recipeRepository.findOne(id);
+    }
+
+    @CrossOrigin
+    @GetMapping(value = "/recipe/top3Creationdate")
+    public List<Recipe> findTop3ByOrderByCreateDateAsc() {
+        return recipeRepository.findTop3ByOrderByCreateDateDesc();
+    }
+
+    @CrossOrigin
+    @GetMapping(value = "/recipe/top3rating")
+    public List<Recipe> findTop3BByRating() {
+        return recipeRepository.findTop3ByRating(new PageRequest(0,3));
     }
 
     @CrossOrigin
@@ -139,6 +160,12 @@ public class RecipeController {
         return this.recipeRepository.save(newRecipe);
     }
 
+    @CrossOrigin
+    @GetMapping(value = "/recipes/creator/{userID}")
+    public List<Recipe> getRecipeByCreator(@PathVariable(value = "userID") long userID) {
+        User user = userRepository.findOne((long) userID);
+        return recipeRepository.findByCreator(user);
+    }
 
 
     //implementation for search page
@@ -158,7 +185,6 @@ public class RecipeController {
     /* Ende Christian, Yoco, Georg */
 
 
-
     /* Anfang Jarno, Philipp, Roman, Yoco */
         @CrossOrigin
         @GetMapping(value = "/recipes?user=id")
@@ -172,4 +198,5 @@ public class RecipeController {
             return recipeRepository.findByIngredients_NameContaining(ingredient);
         }
     /* Ende Jarno, Philipp, Roman, Yoco */
+
 }
