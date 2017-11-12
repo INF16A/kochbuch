@@ -102,6 +102,7 @@ public class Main
 					.antMatchers(HttpMethod.POST, "/comment").hasRole("USER")
 					.antMatchers(HttpMethod.DELETE, "/comment/*").hasRole("USER")
 					.antMatchers(HttpMethod.GET, "/auth/user").hasRole("USER")
+					.antMatchers(HttpMethod.POST,"/recipe/create").hasRole("USER")
 					.anyRequest().permitAll();
 		} 
 		@Override
