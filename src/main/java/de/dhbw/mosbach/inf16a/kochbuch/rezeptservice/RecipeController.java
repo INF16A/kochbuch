@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,7 +33,10 @@ import java.util.List;
  * @author Florian Eder
  * @author Patrick Eichert
  * @author Robert Zebec
+ * @author Team Chrocorg: Christian Werner, Yoco Harrmann und Georg Frey
+ * @author Jarno Wagner, Philipp Steigler, Roman Würtemberger, Yoco Harrmann
  */
+
 @RestController
 public class RecipeController {
 
@@ -170,7 +174,40 @@ public class RecipeController {
     @CrossOrigin
     @GetMapping(value = "/recipes/creator/{userID}")
     public List<Recipe> getRecipeByCreator(@PathVariable(value = "userID") long userID) {
-        User user = userRepository.findOne((long) userID);
+        User user = userRepository.findOne(userID);
         return recipeRepository.findByCreator(user);
     }
+
+
+    //implementation for search page
+    /** Anfang Christian Werner, Yoco Harrmann, Georg Frey */
+
+        @CrossOrigin
+        @GetMapping(value = "/recipes/{name}")
+        public List<Recipe> getRecipesByName(String name) {
+            return recipeRepository.findByNameContaining(name);
+        }
+
+        @CrossOrigin
+        @GetMapping(value = "/recipes/{tag}")
+        public List<Recipe> getRecipesByTag(String tag) {
+            return recipeRepository.findByTags_NameContaining(tag);
+        }
+    /* Ende Christian, Yoco, Georg */
+
+
+    /* Anfang Jarno, Philipp, Roman, Yoco */
+    @CrossOrigin
+    @GetMapping(value = "/recipes/search", params = "user")
+    public List<Recipe> getRecipesByUsername(@RequestParam String user) {
+        return recipeRepository.findByCreator_UsernameIgnoreCase(user);
+    }
+
+    @CrossOrigin
+    @GetMapping(value = "/recipes/search", params = "ingredient")
+    public List<Recipe> getRecipesByIngredientName(@RequestParam String ingredient) {
+        return recipeRepository.findByRecipeIngredients_Ingredient_NameIgnoreCase(ingredient);
+    }
+    /* Ende Jarno, Philipp, Roman, Yoco */
+
 }
