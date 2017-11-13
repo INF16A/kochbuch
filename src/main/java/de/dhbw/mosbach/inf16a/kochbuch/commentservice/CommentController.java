@@ -52,15 +52,17 @@ public class CommentController
 	{
 		User user = ((KochbuchUserPrincipal)((UsernamePasswordAuthenticationToken)p).getPrincipal()).getUser();
 		Comment comment = commentRepository.findOne(commentID);
-
-		if(user.getUserID() == comment.getUser().getUserID()){
-			commentRepository.delete(commentID);
-			return true;
+		if(comment != null){
+			if(user.getUserID() == comment.getUser().getUserID()){
+				commentRepository.delete(commentID);
+				return true;
+			}
+			else{
+				System.out.println("User: "+user.getUserID()+"not authorized to delete comment: "+commentID);
+				return false;
+			}
 		}
-		else{
-			System.out.println("User: "+user.getUserID()+"not authorized to delete comment: "+commentID);
-			return false;
-		}
+		return false;
 	}
 
 	@CrossOrigin
