@@ -93,7 +93,7 @@ public class RecipeController {
 
     @CrossOrigin
     @PostMapping(value = "/recipe/create")
-    public Recipe createRecipe(@RequestBody RecipeRequest recipeRequest, @RequestHeader Principal principal) {
+    public Recipe createRecipe(@RequestBody RecipeRequest recipeRequest, Principal principal) {
 
         Recipe newRecipe = this.recipeRepository.save(new Recipe());
 
