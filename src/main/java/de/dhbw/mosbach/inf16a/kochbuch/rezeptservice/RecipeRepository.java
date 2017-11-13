@@ -25,6 +25,10 @@ public interface RecipeRepository extends CrudRepository<Recipe, Long> {
 
     List<Recipe> findTop3ByOrderByCreateDateDesc();
 
+    /**
+     * Theresa Reus
+     * SELECT-Statement um die Rezepte mit den besten Rating herauszufinden, sortiert absteigend nach dem Rezept mit den besten Rating
+     */
     @Query("SELECT re FROM Recipe re, Rating ra where re.id = ra.recipe group by re.id order by sum(ra.value) desc")
     List<Recipe> findTop3ByRating(Pageable pageable);
 
