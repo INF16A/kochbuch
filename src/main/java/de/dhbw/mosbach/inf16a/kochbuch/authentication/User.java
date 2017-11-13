@@ -18,6 +18,10 @@ import org.hibernate.validator.internal.util.privilegedactions.GetMethod;
  * @author Theresa Reus
  * @author Thomas Hörner
  * @author Marc Reinke
+ * @author Annika Schatz
+ * @author Irina Eurich
+ * @author Endrit Çallaki
+ * @author Tobias Bloch
  */
 
 
@@ -39,10 +43,27 @@ public class User
 	@JsonIgnore
 	private String password;
 
+	private String email;
+
 	@NonNull
 	private Date creationDate;
 
 	@NonNull
 	private Date deletionDate;
 
+	public Long getUserID(){
+		return id;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
 }
