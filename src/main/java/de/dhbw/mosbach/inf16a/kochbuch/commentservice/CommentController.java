@@ -33,11 +33,6 @@ public class CommentController
 	@Autowired
 	private UserRepository userRepository;
 
-	@Autowired
-	private UserController userController;
-
-	@Autowired
-	private TokenManager tokenManager;
 
 	@GetMapping(value = "/comments")
 	public List<Comment> comments()
@@ -53,29 +48,31 @@ public class CommentController
 
 	@CrossOrigin
 	@DeleteMapping(value = "/comment/{commentID}")
-	public void deleteComment(@PathVariable(value = "commentID") long commentID, Principal p)
+	public boolean deleteComment(@PathVariable(value = "commentID") long commentID, Principal p)
 	{
 		User user = ((KochbuchUserPrincipal)((UsernamePasswordAuthenticationToken)p).getPrincipal()).getUser();
 		Comment comment = commentRepository.findOne(commentID);
-
-		if(user.getId() == comment.getUser().getId()){
-			commentRepository.delete(commentID);
+		if(comment != null){
+			if(user.getUserID() == comment.getUser().getUserID()){
+				commentRepository.delete(commentID);
+				return true;
+			}
+			else{
+				System.out.println("User: "+user.getUserID()+"not authorized to delete comment: "+commentID);
+				return false;
+			}
 		}
-		else{
-			System.out.println("User: "+user.getId()+"not authorized to delete comment: "+commentID);
-		}
+		return false;
 	}
 
 	@CrossOrigin
 	@PostMapping(value = "/comment")
 	public Comment addComment(@RequestBody CommentRequest request)
-	// public Comment addComment(@RequestBody Comment theNewComment)
 	{
 		Recipe re = recipeRepository.findOne(request.getRecipeId());
 		User usr = userRepository.findOne(request.getUserId());
 		return this.commentRepository.save(new Comment(request.getText(), request.getCreationDate(), usr, re));
 
-		// return commentRepository.findAllByOrderByCreationDateDesc();
 	}
 
 
