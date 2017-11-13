@@ -8,6 +8,7 @@ services:
       - database-volume:/var/lib/mysql
   backend:
     image: r.patrick246.de/inf16a/kochbuch-backend
+    build: .
     links:
       - database:db
 volumes:
