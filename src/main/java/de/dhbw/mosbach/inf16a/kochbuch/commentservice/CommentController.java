@@ -80,9 +80,9 @@ public class CommentController
 		Recipe re = recipeRepository.findOne(request.getRecipeId());
 		User usr = userRepository.findOne(request.getUserId());
 		return this.commentRepository.save(new Comment(request.getText(), request.getCreationDate(), usr, re));
-		
+
 		// return commentRepository.findAllByOrderByCreationDateDesc();
 	}
 
-	
+
 }
