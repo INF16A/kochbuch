@@ -31,13 +31,13 @@ public interface RecipeRepository extends CrudRepository<Recipe, Long> {
     List<Recipe> findByCreator(User user);
 
     /* Yoco Harrmann, Christian Werner, Georg Frey */
-    List<Recipe> findByNameContaining(String name);
-    List<Recipe> findByTags_NameContaining(String tag);
+    List<Recipe> findByNameContainingIgnoreCase(String name);
+    List<Recipe> findByTags_NameContainingIgnoreCase(String tag);
     /* Ende Yoco, Christian, Georg */
 
 
     /* Jarno Wagner, Phlipp Steigler, Roman Würtemberger, Yoco Harrmann */
-    List<Recipe> findByRecipeIngredients_Ingredient_NameIgnoreCase(String ingredient);
+    List<Recipe> findByRecipeIngredients_Ingredient_NameContainingIgnoreCase(String ingredient);
     List<Recipe> findByCreator_UsernameIgnoreCase(String username);
     /* Ende Jarno, Philipp, Roman, Yoco */
 

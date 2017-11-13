@@ -180,19 +180,22 @@ public class RecipeController {
 
 
     //implementation for search page
-    /** Anfang Christian Werner, Yoco Harrmann, Georg Frey */
 
-        @CrossOrigin
-        @GetMapping(value = "/recipes/{name}")
-        public List<Recipe> getRecipesByName(String name) {
-            return recipeRepository.findByNameContaining(name);
-        }
+    /**
+     * Anfang Christian Werner, Yoco Harrmann, Georg Frey
+     */
 
-        @CrossOrigin
-        @GetMapping(value = "/recipes/{tag}")
-        public List<Recipe> getRecipesByTag(String tag) {
-            return recipeRepository.findByTags_NameContaining(tag);
-        }
+    @CrossOrigin
+    @GetMapping(value = "/recipes/search", params = "name")
+    public List<Recipe> getRecipesByName(String name) {
+        return recipeRepository.findByNameContainingIgnoreCase(name);
+    }
+
+    @CrossOrigin
+    @GetMapping(value = "/recipes/search", params = "tag")
+    public List<Recipe> getRecipesByTag(String tag) {
+        return recipeRepository.findByTags_NameContainingIgnoreCase(tag);
+    }
     /* Ende Christian, Yoco, Georg */
 
 
@@ -206,7 +209,7 @@ public class RecipeController {
     @CrossOrigin
     @GetMapping(value = "/recipes/search", params = "ingredient")
     public List<Recipe> getRecipesByIngredientName(@RequestParam String ingredient) {
-        return recipeRepository.findByRecipeIngredients_Ingredient_NameIgnoreCase(ingredient);
+        return recipeRepository.findByRecipeIngredients_Ingredient_NameContainingIgnoreCase(ingredient);
     }
     /* Ende Jarno, Philipp, Roman, Yoco */
 
