@@ -73,18 +73,32 @@ public class RecipeController {
         return recipeRepository.findAll();
     }
 
+
+    /**
+     * Theresa Reus, Patrick Eichert
+     * Holt ein Rezept per ID aus der Datenbank
+     * @param id
+     */
     @CrossOrigin
     @GetMapping(value = "/recipe/{id}")
     public Recipe getRecipeById(@PathVariable(value = "id") long id) {
         return recipeRepository.findOne(id);
     }
 
+    /**
+     * Theresa Reus
+     * holt drei Rezepte aus der Datenbank sortiert nach Creation-Date
+     */
     @CrossOrigin
     @GetMapping(value = "/recipe/top3Creationdate")
     public List<Recipe> findTop3ByOrderByCreateDateAsc() {
         return recipeRepository.findTop3ByOrderByCreateDateDesc();
     }
 
+    /**
+     * Theresa Reus
+     * holt drei Rezepte aus der DB sortiert nach den höchsten Rating
+     */
     @CrossOrigin
     @GetMapping(value = "/recipe/top3rating")
     public List<Recipe> findTop3BByRating() {
