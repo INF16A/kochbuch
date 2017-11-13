@@ -48,35 +48,23 @@ public class CommentController {
 
     @CrossOrigin
     @DeleteMapping(value = "/comment/{commentID}")
-    public void deleteComment(@PathVariable(value = "commentID") long commentID, Principal p)
-    // public Comment addComment(@RequestBody Comment theNewComment)
-    {
+    public void deleteComment(@PathVariable(value = "commentID") long commentID, Principal p) {
         User user = userController.getUser(p);
         Comment comment = commentRepository.findOne(commentID);
 
-        // Recipe re = recipeRepository.findOne(request.getRecipeId());
-        // User usr = userRepository.findOne(request.getUserId());
-        // Comment c = new Comment(request.getText(), request.getCreationDate(), usr, re);
         if (user.getId() == comment.getUser().getId()) {
             commentRepository.delete(commentID);
         } else {
             System.out.println("User: " + user.getId() + "not authorized to delete comment: " + commentID);
         }
-        // return this.commentRepository.save(new Comment(request.getText(), request.getCreationDate(), usr, re));
-        // return commentRepository.findAllByOrderByCreationDateDesc();
-        // return c;
     }
 
     @CrossOrigin
     @PostMapping(value = "/comment")
-    public Comment addComment(@RequestBody CommentRequest request)
-    // public Comment addComment(@RequestBody Comment theNewComment)
-    {
+    public Comment addComment(@RequestBody CommentRequest request) {
         Recipe re = recipeRepository.findOne(request.getRecipeId());
         User usr = userRepository.findOne(request.getUserId());
         return this.commentRepository.save(new Comment(request.getText(), request.getCreationDate(), usr, re));
-
-        // return commentRepository.findAllByOrderByCreationDateDesc();
     }
 
 
