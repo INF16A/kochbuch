@@ -10,7 +10,5 @@ services:
     image: r.patrick246.de/inf16a/kochbuch-backend
     links:
       - database:db
-    ports:
-      - 127.0.0.1:8085:8080
 volumes:
   database-volume:
